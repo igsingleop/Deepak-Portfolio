@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply antialiased overflow-x-hidden transition-colors duration-300;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-lightBg dark:bg-darkBg;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 dark:bg-slate-700 rounded-full hover:bg-slate-400 dark:hover:bg-slate-600 transition-colors;
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  @apply bg-white/60 dark:bg-darkCard/60 backdrop-blur-md border border-white/20 dark:border-white/5;
+}
+
+.glass-panel-strong {
+  @apply bg-white/80 dark:bg-darkCard/80 backdrop-blur-lg border border-white/30 dark:border-white/10;
+}
+
+.glass-nav {
+  @apply bg-white/70 dark:bg-darkBg/70 backdrop-blur-md border-b border-white/20 dark:border-white/5;
+}
+
+.glass-input {
+  @apply bg-white/40 dark:bg-darkCard/40 backdrop-blur-sm border border-white/10 dark:border-white/5 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none transition-all;
+}
+
+/* Neomorphism Styles (Soft Shadows) */
+.neo-out {
+  box-shadow: 6px 6px 12px #d1d5db, -6px -6px 12px #ffffff;
+}
+
+.neo-in {
+  box-shadow: inset 6px 6px 12px #d1d5db, inset -6px -6px 12px #ffffff;
+}
+
+.neo-dark-out {
+  box-shadow: 6px 6px 12px #070a13, -6px -6px 12px #151c2f;
+}
+
+.neo-dark-in {
+  box-shadow: inset 6px 6px 12px #070a13, inset -6px -6px 12px #151c2f;
+}
+
+/* Smart Responsive Shadows that switch with .dark */
+.neo-box-out {
+  @apply shadow-neo-out dark:shadow-neo-dark-out;
+}
+
+.neo-box-in {
+  @apply shadow-neo-in dark:shadow-neo-dark-in;
+}
+
+.neo-box-card {
+  @apply shadow-neo-card dark:shadow-neo-dark-card;
+}
+
+/* Interactive custom styles */
+.neo-btn {
+  @apply transition-all duration-300 active:scale-95 cursor-pointer;
+  @apply shadow-neo-out dark:shadow-neo-dark-out hover:shadow-neo-in dark:hover:shadow-neo-dark-in;
+}
+
+.neo-btn-inset {
+  @apply transition-all duration-300 active:scale-95 cursor-pointer;
+  @apply shadow-neo-in dark:shadow-neo-dark-in hover:shadow-neo-out dark:hover:shadow-neo-dark-out;
+}
+
+/* Custom Gradients and Glows */
+.text-glow-cyan {
+  text-shadow: 0 0 10px rgba(6, 182, 212, 0.4);
+}
+
+.text-glow-purple {
+  text-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
+}
+
+/* Background Glowing Orbs */
+.glow-orb-cyan {
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, rgba(6, 182, 212, 0) 70%);
+}
+
+.glow-orb-purple {
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, rgba(168, 85, 247, 0) 70%);
+}
+
+.glow-orb-blue {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(59, 130, 246, 0) 70%);
+}
+
+/* Animation utilities */
+.hover-lift {
+  @apply transition-transform duration-300 hover:-translate-y-1.5;
+}
