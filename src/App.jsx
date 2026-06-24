@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import { useDarkMode } from './hooks/useDarkMode';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -9,6 +9,7 @@ import Experience from './components/Experience';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import CustomCursor from './components/CustomCursor';
 
 // Dynamic background particles
 function BackgroundParticles() {
@@ -55,9 +56,24 @@ function BackgroundParticles() {
 
 function App() {
   const [theme, toggleTheme] = useDarkMode();
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   return (
     <div className="min-h-screen relative w-full overflow-hidden bg-lightBg dark:bg-darkBg transition-colors duration-300 text-slate-700 dark:text-slate-300">
+      {/* Custom Cursor */}
+      <CustomCursor />
+
+      {/* Floating Glowing Scroll Progress Bar */}
+      <motion.div 
+        className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 origin-left z-[99] shadow-[0_1px_10px_rgba(6,182,212,0.4)]" 
+        style={{ scaleX }} 
+      />
+
       {/* Decorative Orbs & Particles */}
       <BackgroundParticles />
       

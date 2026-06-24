@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Sun, Moon, Menu, X } from 'lucide-react';
+import Magnetic from './Magnetic';
 
 export default function Navbar({ theme, toggleTheme }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,39 +45,44 @@ export default function Navbar({ theme, toggleTheme }) {
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'glass-nav py-3 shadow-md' : 'bg-transparent py-5'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
-        <a href="#home" className="font-sora font-extrabold text-xl tracking-tight flex items-center gap-1 group">
-          <span className="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">Deepak</span>
-          <span className="text-slate-800 dark:text-white">K N</span>
-          <span className="h-2 w-2 rounded-full bg-cyan-500 animate-pulse"></span>
-        </a>
+        <Magnetic actionScale={0.15}>
+          <a href="#home" className="font-sora font-extrabold text-xl tracking-tight flex items-center gap-1 group block">
+            <span className="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">Deepak</span>
+            <span className="text-slate-800 dark:text-white">K N</span>
+            <span className="h-2 w-2 rounded-full bg-cyan-500 animate-pulse"></span>
+          </a>
+        </Magnetic>
 
         {/* Desktop Nav Links */}
         <div className="hidden md:flex items-center gap-8">
           <div className="flex gap-1 bg-slate-200/50 dark:bg-slate-800/40 p-1.5 rounded-full backdrop-blur-sm border border-slate-300/20 dark:border-white/5">
             {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className={`font-outfit text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-300 ${
-                  activeSection === link.href.slice(1)
-                    ? 'bg-white dark:bg-slate-900 text-cyan-600 dark:text-cyan-400 shadow-sm font-semibold'
-                    : 'text-slate-600 dark:text-slate-400 hover:text-cyan-500 dark:hover:text-cyan-400'
-                }`}
-              >
-                {link.name}
-              </a>
+              <Magnetic key={link.name} actionScale={0.2}>
+                <a
+                  href={link.href}
+                  className={`font-outfit text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-300 block ${
+                    activeSection === link.href.slice(1)
+                      ? 'bg-white dark:bg-slate-900 text-cyan-600 dark:text-cyan-400 shadow-sm font-semibold'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-cyan-500 dark:hover:text-cyan-400'
+                  }`}
+                >
+                  {link.name}
+                </a>
+              </Magnetic>
             ))}
           </div>
 
           {/* Neomorphic Theme Toggle */}
-          <button
-            onClick={toggleTheme}
-            id="theme-toggle-btn"
-            className="w-10 h-10 rounded-full flex items-center justify-center neo-btn bg-lightBg dark:bg-darkBg border border-white/40 dark:border-white/5 text-slate-700 dark:text-yellow-400"
-            aria-label="Toggle Theme"
-          >
-            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-          </button>
+          <Magnetic>
+            <button
+              onClick={toggleTheme}
+              id="theme-toggle-btn"
+              className="w-10 h-10 rounded-full flex items-center justify-center neo-btn bg-lightBg dark:bg-darkBg border border-white/40 dark:border-white/5 text-slate-700 dark:text-yellow-400"
+              aria-label="Toggle Theme"
+            >
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+          </Magnetic>
         </div>
 
         {/* Mobile Menu & Theme Toggle */}

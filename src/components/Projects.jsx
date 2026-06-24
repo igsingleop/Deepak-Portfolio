@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Sparkles, TrendingDown, ShoppingCart, HelpCircle } from 'lucide-react';
+import Magnetic from './Magnetic';
 
 export default function Projects() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -141,12 +142,14 @@ export default function Projects() {
                   className="w-full pl-12 pr-32 py-3.5 rounded-2xl glass-input text-slate-800 dark:text-white font-inter placeholder-slate-400"
                 />
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-                <button
-                  type="submit"
-                  className="absolute right-2 top-1/2 -translate-y-1/2 px-5 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-outfit text-sm font-semibold hover:shadow-md hover:shadow-cyan-500/10 transition-all"
-                >
-                  Compare
-                </button>
+                <Magnetic className="absolute right-2 top-1/2 -translate-y-1/2">
+                  <button
+                    type="submit"
+                    className="px-5 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-outfit text-sm font-semibold hover:shadow-md hover:shadow-cyan-500/10 transition-all block"
+                  >
+                    Compare
+                  </button>
+                </Magnetic>
               </form>
 
               {/* Comparison Results */}
@@ -231,15 +234,17 @@ export default function Projects() {
                               <div className="font-sora font-extrabold text-lg text-slate-800 dark:text-white">
                                 {item.price.toLocaleString('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 })}
                               </div>
-                              <a
-                                href={item.url}
-                                className={`px-4 py-2 rounded-lg font-outfit text-xs font-semibold transition-all ${item.best
-                                    ? 'bg-cyan-500 hover:bg-cyan-600 text-white'
-                                    : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
-                                  }`}
-                              >
-                                View Deal
-                              </a>
+                              <Magnetic>
+                                <a
+                                  href={item.url}
+                                  className={`px-4 py-2 rounded-lg font-outfit text-xs font-semibold transition-all block ${item.best
+                                      ? 'bg-cyan-500 hover:bg-cyan-600 text-white'
+                                      : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
+                                    }`}
+                                >
+                                  View Deal
+                                </a>
+                              </Magnetic>
                             </div>
                           </div>
                         ))}
