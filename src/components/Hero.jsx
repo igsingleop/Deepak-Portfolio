@@ -87,8 +87,8 @@ export default function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
       {/* Background Glowing Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full glow-orb-cyan -z-10 animate-float-slow"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full glow-orb-purple -z-10 animate-float-medium"></div>
+      <div className="absolute top-1/4 left-1/4 w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] rounded-full glow-orb-cyan -z-10 animate-float-slow"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] rounded-full glow-orb-purple -z-10 animate-float-medium"></div>
 
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
         {/* Text Info */}
@@ -103,11 +103,11 @@ export default function Hero() {
             Available for Opportunities
           </motion.div>
 
-          <motion.h1 variants={itemVariants} className="font-sora font-extrabold text-5xl md:text-6xl lg:text-7xl leading-tight text-slate-800 dark:text-white mb-6">
+          <motion.h1 variants={itemVariants} className="font-sora font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight text-slate-800 dark:text-white mb-6">
             Hi, I'm <span className="bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 bg-clip-text text-transparent">Deepak K N</span>
           </motion.h1>
 
-          <motion.h2 variants={itemVariants} className="font-outfit font-semibold text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
+          <motion.h2 variants={itemVariants} className="font-outfit font-semibold text-lg sm:text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
             AI & Data Science Graduate <span className="text-cyan-500">&amp;</span> Freelance UI/UX Designer
           </motion.h2>
 
