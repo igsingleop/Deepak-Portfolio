@@ -76,13 +76,8 @@ export default function Projects() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Column 1: Project Description */}
           <div className="lg:col-span-5 flex flex-col text-left justify-start">
-<<<<<<< HEAD
-            <div className="p-8 rounded-3xl glass-panel-strong shadow-lg border border-white/20 dark:border-white/5 mb-6 relative">
-              <span className="absolute top-6 right-6 font-outfit text-xs font-semibold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
-=======
             <div className="p-6 sm:p-8 rounded-3xl glass-panel-strong shadow-lg border border-white/20 dark:border-white/5 mb-6 relative">
-              <span className="absolute top-6 right-6 font-outfit text-xs font-semibold px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">
->>>>>>> 0a87d38d4e5dcd9df2bb7fee46e67e30030a7eea
+              <span className="absolute top-6 right-6 font-outfit text-xs font-semibold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
                 2024
               </span>
 
@@ -129,13 +124,8 @@ export default function Projects() {
             <div className="p-6 sm:p-8 rounded-3xl neo-box-out bg-white dark:bg-darkCard border border-white/40 dark:border-white/5 relative">
               <div className="flex justify-between items-center mb-6">
                 <h4 className="font-sora font-bold text-lg text-slate-800 dark:text-white flex items-center gap-2">
-<<<<<<< HEAD
                   <Sparkles size={18} className="text-emerald-500" />
                   Live Logic Sandbox
-=======
-                  <Sparkles size={18} className="text-cyan-500" />
-                  Compare the price of product you need
->>>>>>> 0a87d38d4e5dcd9df2bb7fee46e67e30030a7eea
                 </h4>
                 <span className="text-[10px] font-sora font-extrabold px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-900 text-slate-400 dark:text-slate-500 border border-slate-200 dark:border-slate-800 uppercase">
                   Simulated
@@ -143,7 +133,7 @@ export default function Projects() {
               </div>
 
               {/* Search input Form */}
-              <form onSubmit={handleCompare} className="flex items-center gap-2 p-1.5 rounded-2xl bg-white/40 dark:bg-darkCard/40 backdrop-blur-sm border border-white/10 dark:border-white/5 focus-within:border-cyan-500/50 focus-within:ring-1 focus-within:ring-cyan-500/50 transition-all mb-8">
+              <form onSubmit={handleCompare} className="flex items-center gap-2 p-1.5 rounded-2xl bg-white/40 dark:bg-darkCard/40 backdrop-blur-sm border border-white/10 dark:border-white/5 focus-within:border-emerald-500/50 focus-within:ring-1 focus-within:ring-emerald-500/50 transition-all mb-8">
                 <div className="pl-3 text-slate-400 shrink-0">
                   <Search size={18} />
                 </div>
@@ -157,11 +147,7 @@ export default function Projects() {
                 <Magnetic className="shrink-0">
                   <button
                     type="submit"
-<<<<<<< HEAD
-                    className="px-5 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-outfit text-sm font-semibold hover:shadow-md hover:shadow-emerald-500/10 transition-all block"
-=======
-                    className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-outfit text-sm font-semibold hover:shadow-md hover:shadow-cyan-500/10 transition-all block"
->>>>>>> 0a87d38d4e5dcd9df2bb7fee46e67e30030a7eea
+                    className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-outfit text-sm font-semibold hover:shadow-md hover:shadow-emerald-500/10 transition-all block"
                   >
                     Compare
                   </button>
@@ -224,13 +210,8 @@ export default function Projects() {
                           <div
                             key={idx}
                             className={`p-4 rounded-xl border flex flex-col sm:flex-row justify-between sm:items-center gap-3 transition-all ${item.best
-<<<<<<< HEAD
                                 ? 'bg-gradient-to-r from-emerald-500/5 to-teal-500/5 border-emerald-500/30 shadow-sm'
                                 : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800'
-=======
-                              ? 'bg-gradient-to-r from-cyan-500/5 to-blue-500/5 border-cyan-500/30 shadow-sm'
-                              : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800'
->>>>>>> 0a87d38d4e5dcd9df2bb7fee46e67e30030a7eea
                               }`}
                           >
                             <div className="flex items-center gap-3">
@@ -261,13 +242,8 @@ export default function Projects() {
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   className={`px-4 py-2 rounded-lg font-outfit text-xs font-semibold transition-all block ${item.best
-<<<<<<< HEAD
                                       ? 'bg-emerald-500 hover:bg-emerald-600 text-white'
                                       : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
-=======
-                                    ? 'bg-cyan-500 hover:bg-cyan-600 text-white'
-                                    : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
->>>>>>> 0a87d38d4e5dcd9df2bb7fee46e67e30030a7eea
                                     }`}
                                 >
                                   View Deal
