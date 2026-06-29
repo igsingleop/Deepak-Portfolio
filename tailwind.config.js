@@ -19,20 +19,21 @@ export default {
         'neo-card': '12px 12px 24px #d1d5db, -12px -12px 24px #ffffff',
         
         // Dark mode neomorphism
-        'neo-dark-out': '6px 6px 12px #070a13, -6px -6px 12px #151c2f',
-        'neo-dark-in': 'inset 6px 6px 12px #070a13, inset -6px -6px 12px #151c2f',
-        'neo-dark-card': '12px 12px 24px #070a13, -12px -12px 24px #151c2f',
+        'neo-dark-out': '6px 6px 12px #030504, -6px -6px 12px #15221F',
+        'neo-dark-in': 'inset 6px 6px 12px #030504, inset -6px -6px 12px #15221F',
+        'neo-dark-card': '12px 12px 24px #030504, -12px -12px 24px #15221F',
 
         // Glassmorphism accent glows
-        'glass-cyan': '0 8px 32px 0 rgba(6, 182, 212, 0.15)',
-        'glass-purple': '0 8px 32px 0 rgba(168, 85, 247, 0.15)',
-        'glass-blue': '0 8px 32px 0 rgba(59, 130, 246, 0.15)',
+        'glass-emerald': '0 8px 32px 0 rgba(16, 185, 129, 0.15)',
+        'glass-teal': '0 8px 32px 0 rgba(20, 184, 166, 0.15)',
+        'glass-indigo': '0 8px 32px 0 rgba(99, 102, 241, 0.15)',
+        'glass-cyan': '0 8px 32px 0 rgba(16, 185, 129, 0.15)', // Maintain fallback compatibility
       },
       colors: {
-        darkBg: '#0B0F19',
-        darkCard: '#131A2D',
+        darkBg: '#060A09',
+        darkCard: '#0F1614',
         darkBorder: 'rgba(255, 255, 255, 0.08)',
-        lightBg: '#F3F4F6',
+        lightBg: '#F2F6F5',
         lightCard: '#FFFFFF',
         lightBorder: 'rgba(0, 0, 0, 0.05)',
       },

@@ -35,15 +35,15 @@ export default function Experience() {
   return (
     <section id="experience" className="py-24 relative overflow-hidden bg-slate-50/50 dark:bg-slate-900/30">
       {/* Background Orbs */}
-      <div className="absolute left-10 top-1/3 w-[300px] h-[300px] rounded-full glow-orb-purple -z-10 animate-float-slow"></div>
+      <div className="absolute left-10 top-1/3 w-[300px] h-[300px] rounded-full glow-orb-indigo -z-10 animate-float-slow"></div>
 
       <div className="max-w-5xl mx-auto px-6">
         {/* Section Heading */}
         <div className="text-center mb-16">
           <h2 className="font-sora font-extrabold text-3xl md:text-4xl text-slate-800 dark:text-white mb-4">
-            Work <span className="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">Experience</span>
+            Work <span className="bg-gradient-to-r from-emerald-500 to-teal-600 bg-clip-text text-transparent">Experience</span>
           </h2>
-          <div className="h-1 w-20 bg-cyan-500 mx-auto rounded-full"></div>
+          <div className="h-1 w-20 bg-emerald-500 mx-auto rounded-full"></div>
         </div>
 
         {/* Timeline Stack */}
@@ -58,12 +58,12 @@ export default function Experience() {
               className="p-8 md:p-10 rounded-3xl glass-panel hover:neo-box-in transition-all duration-300 border border-white/20 dark:border-white/5 relative"
             >
               {/* Highlight bar */}
-              <div className="absolute top-0 left-8 right-8 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-b-full"></div>
+              <div className="absolute top-0 left-8 right-8 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-b-full"></div>
 
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
                 <div>
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="p-1.5 rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">
+                    <span className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
                       <Briefcase size={16} />
                     </span>
                     <span className="font-outfit text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-200/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-400">
@@ -73,13 +73,13 @@ export default function Experience() {
                   <h3 className="font-sora font-extrabold text-2xl text-slate-800 dark:text-white">
                     {exp.role}
                   </h3>
-                  <div className="font-outfit text-lg text-cyan-600 dark:text-cyan-400 font-semibold mt-0.5">
+                  <div className="font-outfit text-lg text-emerald-600 dark:text-emerald-400 font-semibold mt-0.5">
                     {exp.company}
                   </div>
                 </div>
 
                 <div className="flex items-center gap-1.5 px-4 py-1.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 font-outfit text-sm font-semibold text-slate-600 dark:text-slate-300 w-fit neo-box-out">
-                  <Calendar size={14} className="text-cyan-500" />
+                  <Calendar size={14} className="text-emerald-500" />
                   {exp.duration}
                 </div>
               </div>
@@ -88,7 +88,7 @@ export default function Experience() {
               <ul className="space-y-3.5 mb-8 text-left">
                 {exp.bullets.map((bullet, bIdx) => (
                   <li key={bIdx} className="flex items-start gap-3">
-                    <span className="mt-1 text-cyan-500 shrink-0">
+                    <span className="mt-1 text-emerald-500 shrink-0">
                       <CheckCircle2 size={16} />
                     </span>
                     <span className="font-inter text-slate-600 dark:text-slate-400 text-sm md:text-base leading-relaxed">

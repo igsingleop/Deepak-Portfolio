@@ -46,9 +46,9 @@ export default function About() {
         {/* Section Heading */}
         <div className="text-center mb-16">
           <h2 className="font-sora font-extrabold text-3xl md:text-4xl text-slate-800 dark:text-white mb-4">
-            About <span className="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">Me</span>
+            About <span className="bg-gradient-to-r from-emerald-500 to-teal-600 bg-clip-text text-transparent">Me</span>
           </h2>
-          <div className="h-1 w-20 bg-cyan-500 mx-auto rounded-full"></div>
+          <div className="h-1 w-20 bg-emerald-500 mx-auto rounded-full"></div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
@@ -88,12 +88,12 @@ export default function About() {
                   <div key={skill.name}>
                     <div className="flex justify-between font-outfit text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                       <span>{skill.name}</span>
-                      <span className="text-cyan-500">{skill.level}%</span>
+                      <span className="text-emerald-500">{skill.level}%</span>
                     </div>
                     {/* Neomorphic Progress Bar */}
                     <div className="h-3.5 w-full rounded-full bg-slate-200 dark:bg-slate-900/60 p-0.5 border border-slate-300/10 shadow-inner">
                       <motion.div
-                        className="h-full rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 shadow-md"
+                        className="h-full rounded-full bg-gradient-to-r from-emerald-400 to-teal-500 shadow-md"
                         initial={{ width: 0 }}
                         whileInView={{ width: `${skill.level}%` }}
                         viewport={{ once: true }}
@@ -112,7 +112,7 @@ export default function About() {
               Education History
             </h3>
             
-            <div className="relative border-l-2 border-cyan-500/30 dark:border-cyan-500/15 ml-4 pl-8 space-y-10">
+            <div className="relative border-l-2 border-emerald-500/30 dark:border-emerald-500/15 ml-4 pl-8 space-y-10">
               {education.map((item, idx) => (
                 <motion.div
                   key={idx}
@@ -123,16 +123,16 @@ export default function About() {
                   className="relative group"
                 >
                   {/* Timeline dot */}
-                  <span className="absolute -left-[45px] top-1.5 w-8 h-8 rounded-full bg-lightBg dark:bg-darkBg border-2 border-cyan-500 flex items-center justify-center shadow-md shadow-cyan-500/20 group-hover:scale-110 transition-transform">
-                    <GraduationCap size={14} className="text-cyan-500" />
+                  <span className="absolute -left-[45px] top-1.5 w-8 h-8 rounded-full bg-lightBg dark:bg-darkBg border-2 border-emerald-500 flex items-center justify-center shadow-md shadow-emerald-500/20 group-hover:scale-110 transition-transform">
+                    <GraduationCap size={14} className="text-emerald-500" />
                   </span>
 
                   <div className="p-6 md:p-8 rounded-3xl glass-panel-strong hover:neo-box-in transition-all duration-300 border border-white/20 dark:border-white/5 relative">
                     <div className="flex flex-wrap justify-between items-center gap-2 mb-3">
-                      <h4 className="font-sora font-bold text-lg text-slate-800 dark:text-white group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors">
+                      <h4 className="font-sora font-bold text-lg text-slate-800 dark:text-white group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors">
                         {item.degree}
                       </h4>
-                      <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 font-outfit text-xs font-semibold">
+                      <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-outfit text-xs font-semibold">
                         <Calendar size={12} />
                         {item.year}
                       </div>
@@ -146,7 +146,7 @@ export default function About() {
                       {item.desc}
                     </p>
 
-                    <div className="inline-flex items-center gap-1 text-xs font-sora font-bold uppercase tracking-wider text-cyan-600 dark:text-cyan-400">
+                    <div className="inline-flex items-center gap-1 text-xs font-sora font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
                       <Award size={12} />
                       Score: {item.percentage}
                     </div>

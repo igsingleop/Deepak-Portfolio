@@ -80,7 +80,7 @@ export default function CustomCursor() {
     <>
       {/* Outer Spring Ring */}
       <motion.div
-        className="fixed top-0 left-0 w-9 h-9 rounded-full border-2 border-cyan-500 pointer-events-none z-[9999] mix-blend-difference"
+        className="fixed top-0 left-0 w-9 h-9 rounded-full border-2 border-emerald-500 pointer-events-none z-[9999] mix-blend-difference"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
@@ -89,14 +89,14 @@ export default function CustomCursor() {
         }}
         animate={{
           scale: hovered ? 1.5 : clicked ? 0.8 : 1,
-          backgroundColor: hovered ? 'rgba(6, 182, 212, 0.3)' : 'rgba(6, 182, 212, 0)',
-          borderColor: hovered ? 'rgb(6, 182, 212)' : 'rgb(6, 182, 212)',
+          backgroundColor: hovered ? 'rgba(16, 185, 129, 0.3)' : 'rgba(16, 185, 129, 0)',
+          borderColor: hovered ? 'rgb(16, 185, 129)' : 'rgb(16, 185, 129)',
         }}
         transition={{ type: 'spring', stiffness: 450, damping: 25 }}
       />
       {/* Inner Immediate Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-2.5 h-2.5 rounded-full bg-cyan-500 pointer-events-none z-[9999] mix-blend-difference"
+        className="fixed top-0 left-0 w-2.5 h-2.5 rounded-full bg-emerald-500 pointer-events-none z-[9999] mix-blend-difference"
         style={{
           x: cursorX,
           y: cursorY,

@@ -143,15 +143,15 @@ export default function Contact() {
   return (
     <section id="contact" className="py-24 relative overflow-hidden bg-slate-50/50 dark:bg-slate-900/30">
       {/* Background Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-[350px] h-[350px] rounded-full glow-orb-purple -z-10 animate-float-slow"></div>
+      <div className="absolute top-1/4 left-1/4 w-[350px] h-[350px] rounded-full glow-orb-indigo -z-10 animate-float-slow"></div>
 
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Heading */}
         <div className="text-center mb-16">
           <h2 className="font-sora font-extrabold text-3xl md:text-4xl text-slate-800 dark:text-white mb-4">
-            Get In <span className="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">Touch</span>
+            Get In <span className="bg-gradient-to-r from-emerald-500 to-teal-600 bg-clip-text text-transparent">Touch</span>
           </h2>
-          <div className="h-1 w-20 bg-cyan-500 mx-auto rounded-full"></div>
+          <div className="h-1 w-20 bg-emerald-500 mx-auto rounded-full"></div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -170,14 +170,14 @@ export default function Contact() {
                     rel={detail.target ? 'noopener noreferrer' : undefined}
                     className="p-5 rounded-2xl bg-white dark:bg-darkCard border border-white/30 dark:border-white/5 flex items-start gap-4 hover:neo-box-in transition-all duration-300 neo-box-out group block"
                   >
-                    <div className="p-3 rounded-xl bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 group-hover:scale-110 transition-transform">
+                    <div className="p-3 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform">
                       {detail.icon}
                     </div>
                     <div>
                       <div className="font-outfit text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wide">
                         {detail.label}
                       </div>
-                      <div className="font-sora font-semibold text-sm md:text-base text-slate-800 dark:text-white mt-1 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors">
+                      <div className="font-sora font-semibold text-sm md:text-base text-slate-800 dark:text-white mt-1 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors">
                         {detail.value}
                       </div>
                       {detail.subValue && (
@@ -250,7 +250,7 @@ export default function Contact() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-4 rounded-2xl bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 text-white font-outfit font-bold shadow-lg hover:shadow-cyan-500/20 active:scale-[0.98] transition-all flex items-center justify-center gap-2 group disabled:opacity-75 disabled:pointer-events-none block"
+                      className="w-full py-4 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-indigo-600 text-white font-outfit font-bold shadow-lg hover:shadow-emerald-500/20 active:scale-[0.98] transition-all flex items-center justify-center gap-2 group disabled:opacity-75 disabled:pointer-events-none block"
                     >
                       {isSubmitting ? (
                         <>

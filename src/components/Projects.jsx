@@ -62,22 +62,22 @@ export default function Projects() {
   return (
     <section id="projects" className="py-24 relative overflow-hidden">
       {/* Background Orbs */}
-      <div className="absolute right-10 bottom-1/4 w-[400px] h-[400px] rounded-full glow-orb-cyan -z-10 animate-float-slow"></div>
+      <div className="absolute right-10 bottom-1/4 w-[400px] h-[400px] rounded-full glow-orb-emerald -z-10 animate-float-slow"></div>
 
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Heading */}
         <div className="text-center mb-16">
           <h2 className="font-sora font-extrabold text-3xl md:text-4xl text-slate-800 dark:text-white mb-4">
-            Featured <span className="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">Projects</span>
+            Featured <span className="bg-gradient-to-r from-emerald-500 to-teal-600 bg-clip-text text-transparent">Projects</span>
           </h2>
-          <div className="h-1 w-20 bg-cyan-500 mx-auto rounded-full"></div>
+          <div className="h-1 w-20 bg-emerald-500 mx-auto rounded-full"></div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Column 1: Project Description */}
           <div className="lg:col-span-5 flex flex-col text-left justify-start">
             <div className="p-8 rounded-3xl glass-panel-strong shadow-lg border border-white/20 dark:border-white/5 mb-6 relative">
-              <span className="absolute top-6 right-6 font-outfit text-xs font-semibold px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">
+              <span className="absolute top-6 right-6 font-outfit text-xs font-semibold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
                 2024
               </span>
 
@@ -105,14 +105,14 @@ export default function Projects() {
                   Vercel Ready
                 </div>
                 <div className="flex items-center gap-2 text-xs font-inter text-slate-400">
-                  <span className="h-2.5 w-2.5 rounded-full bg-purple-500"></span>
+                  <span className="h-2.5 w-2.5 rounded-full bg-indigo-500"></span>
                   Responsive Design
                 </div>
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-cyan-500/5 border border-cyan-500/10 flex items-start gap-3">
-              <HelpCircle className="text-cyan-500 shrink-0 mt-0.5" size={18} />
+            <div className="p-6 rounded-2xl bg-emerald-500/5 border border-emerald-500/10 flex items-start gap-3">
+              <HelpCircle className="text-emerald-500 shrink-0 mt-0.5" size={18} />
               <p className="font-inter text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                 <strong>Try the Widget:</strong> On the right side, search for keywords like <strong>"iPhone"</strong>, <strong>"Laptop"</strong>, <strong>"Headphones"</strong>, or <strong>"Figma"</strong> to see how the price comparison logic displays results in real-time.
               </p>
@@ -124,7 +124,7 @@ export default function Projects() {
             <div className="p-8 rounded-3xl neo-box-out bg-white dark:bg-darkCard border border-white/40 dark:border-white/5 relative">
               <div className="flex justify-between items-center mb-6">
                 <h4 className="font-sora font-bold text-lg text-slate-800 dark:text-white flex items-center gap-2">
-                  <Sparkles size={18} className="text-cyan-500" />
+                  <Sparkles size={18} className="text-emerald-500" />
                   Live Logic Sandbox
                 </h4>
                 <span className="text-[10px] font-sora font-extrabold px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-900 text-slate-400 dark:text-slate-500 border border-slate-200 dark:border-slate-800 uppercase">
@@ -145,7 +145,7 @@ export default function Projects() {
                 <Magnetic className="absolute right-2 top-1/2 -translate-y-1/2">
                   <button
                     type="submit"
-                    className="px-5 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-outfit text-sm font-semibold hover:shadow-md hover:shadow-cyan-500/10 transition-all block"
+                    className="px-5 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-outfit text-sm font-semibold hover:shadow-md hover:shadow-emerald-500/10 transition-all block"
                   >
                     Compare
                   </button>
@@ -164,7 +164,7 @@ export default function Projects() {
                       className="flex flex-col items-center gap-3"
                     >
                       {/* Interactive neomorphic spinner */}
-                      <div className="w-12 h-12 rounded-full border-4 border-cyan-500/30 border-t-cyan-500 animate-spin"></div>
+                      <div className="w-12 h-12 rounded-full border-4 border-emerald-500/30 border-t-emerald-500 animate-spin"></div>
                       <p className="font-outfit text-sm text-slate-400 animate-pulse">Scanning multiple retailers...</p>
                     </motion.div>
                   )}
@@ -208,12 +208,12 @@ export default function Projects() {
                           <div
                             key={idx}
                             className={`p-4 rounded-xl border flex flex-col sm:flex-row justify-between sm:items-center gap-3 transition-all ${item.best
-                                ? 'bg-gradient-to-r from-cyan-500/5 to-blue-500/5 border-cyan-500/30 shadow-sm'
+                                ? 'bg-gradient-to-r from-emerald-500/5 to-teal-500/5 border-emerald-500/30 shadow-sm'
                                 : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800'
                               }`}
                           >
                             <div className="flex items-center gap-3">
-                              <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-sora font-extrabold text-sm ${item.best ? 'bg-gradient-to-br from-cyan-500 to-blue-500 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500'
+                              <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-sora font-extrabold text-sm ${item.best ? 'bg-gradient-to-br from-emerald-500 to-teal-500 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500'
                                 }`}>
                                 {item.store[0]}
                               </div>
@@ -221,7 +221,7 @@ export default function Projects() {
                                 <div className="font-sora font-bold text-sm text-slate-800 dark:text-white flex items-center gap-1.5">
                                   {item.store}
                                   {item.best && (
-                                    <span className="px-2 py-0.5 rounded bg-cyan-500 text-[8px] text-white uppercase font-extrabold font-sora tracking-wide">
+                                    <span className="px-2 py-0.5 rounded bg-emerald-500 text-[8px] text-white uppercase font-extrabold font-sora tracking-wide">
                                       Best Deal
                                     </span>
                                   )}
@@ -238,7 +238,7 @@ export default function Projects() {
                                 <a
                                   href={item.url}
                                   className={`px-4 py-2 rounded-lg font-outfit text-xs font-semibold transition-all block ${item.best
-                                      ? 'bg-cyan-500 hover:bg-cyan-600 text-white'
+                                      ? 'bg-emerald-500 hover:bg-emerald-600 text-white'
                                       : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
                                     }`}
                                 >

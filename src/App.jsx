@@ -28,7 +28,7 @@ function BackgroundParticles() {
         return (
           <motion.div
             key={idx}
-            className="absolute rounded-full bg-cyan-500/5 dark:bg-cyan-500/10 blur-[1px]"
+            className="absolute rounded-full bg-emerald-500/5 dark:bg-emerald-500/10 blur-[1px]"
             style={{
               width: size,
               height: size,
@@ -70,7 +70,7 @@ function App() {
 
       {/* Floating Glowing Scroll Progress Bar */}
       <motion.div 
-        className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 origin-left z-[99] shadow-[0_1px_10px_rgba(6,182,212,0.4)]" 
+        className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-emerald-500 via-teal-500 to-indigo-600 origin-left z-[99] shadow-[0_1px_10px_rgba(16,185,129,0.4)]" 
         style={{ scaleX }} 
       />
 

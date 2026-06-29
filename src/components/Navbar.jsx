@@ -47,9 +47,9 @@ export default function Navbar({ theme, toggleTheme }) {
         {/* Logo */}
         <Magnetic actionScale={0.15}>
           <a href="#home" className="font-sora font-extrabold text-xl tracking-tight flex items-center gap-1 group block">
-            <span className="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">Deepak</span>
+            <span className="bg-gradient-to-r from-emerald-500 to-teal-600 bg-clip-text text-transparent">Deepak</span>
             <span className="text-slate-800 dark:text-white">K N</span>
-            <span className="h-2 w-2 rounded-full bg-cyan-500 animate-pulse"></span>
+            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
           </a>
         </Magnetic>
 
@@ -62,8 +62,8 @@ export default function Navbar({ theme, toggleTheme }) {
                   href={link.href}
                   className={`font-outfit text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-300 block ${
                     activeSection === link.href.slice(1)
-                      ? 'bg-white dark:bg-slate-900 text-cyan-600 dark:text-cyan-400 shadow-sm font-semibold'
-                      : 'text-slate-600 dark:text-slate-400 hover:text-cyan-500 dark:hover:text-cyan-400'
+                      ? 'bg-white dark:bg-slate-900 text-emerald-600 dark:text-emerald-400 shadow-sm font-semibold'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400'
                   }`}
                 >
                   {link.name}
@@ -116,7 +116,7 @@ export default function Navbar({ theme, toggleTheme }) {
                 onClick={() => setIsOpen(false)}
                 className={`font-outfit text-lg font-semibold w-full text-center py-3 rounded-2xl transition-all ${
                   activeSection === link.href.slice(1)
-                    ? 'bg-slate-100 dark:bg-slate-800 text-cyan-600 dark:text-cyan-400 border border-slate-200 dark:border-slate-700'
+                    ? 'bg-slate-100 dark:bg-slate-800 text-emerald-600 dark:text-emerald-400 border border-slate-200 dark:border-slate-700'
                     : 'text-slate-600 dark:text-slate-400'
                 }`}
               >

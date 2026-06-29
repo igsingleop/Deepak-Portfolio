@@ -87,8 +87,8 @@ export default function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
       {/* Background Glowing Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full glow-orb-cyan -z-10 animate-float-slow"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full glow-orb-purple -z-10 animate-float-medium"></div>
+      <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full glow-orb-emerald -z-10 animate-float-slow"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full glow-orb-indigo -z-10 animate-float-medium"></div>
 
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
         {/* Text Info */}
@@ -98,17 +98,17 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
         >
-          <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-600 dark:text-cyan-400 font-outfit text-xs font-semibold uppercase tracking-wider mb-6 w-fit">
-            <span className="h-1.5 w-1.5 rounded-full bg-cyan-500 animate-pulse"></span>
+          <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 font-outfit text-xs font-semibold uppercase tracking-wider mb-6 w-fit">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
             Available for Opportunities
           </motion.div>
 
           <motion.h1 variants={itemVariants} className="font-sora font-extrabold text-5xl md:text-6xl lg:text-7xl leading-tight text-slate-800 dark:text-white mb-6">
-            Hi, I'm <span className="bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 bg-clip-text text-transparent">Deepak K N</span>
+            Hi, I'm <span className="bg-gradient-to-r from-emerald-500 via-teal-500 to-indigo-600 bg-clip-text text-transparent">Deepak K N</span>
           </motion.h1>
 
           <motion.h2 variants={itemVariants} className="font-outfit font-semibold text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
-            AI & Data Science Graduate <span className="text-cyan-500">&amp;</span> Freelance UI/UX Designer
+            AI & Data Science Graduate <span className="text-emerald-500">&amp;</span> Freelance UI/UX Designer
           </motion.h2>
 
           <motion.p variants={itemVariants} className="font-inter text-slate-500 dark:text-slate-400 text-base md:text-lg mb-8 max-w-xl leading-relaxed">
@@ -120,7 +120,7 @@ export default function Hero() {
             <Magnetic>
               <a
                 href="#projects"
-                className="px-8 py-3.5 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-outfit font-semibold shadow-lg hover:shadow-cyan-500/30 transition-all flex items-center gap-2 group hover:scale-[1.02] active:scale-[0.98] block"
+                className="px-8 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-outfit font-semibold shadow-lg hover:shadow-emerald-500/30 transition-all flex items-center gap-2 group hover:scale-[1.02] active:scale-[0.98] block"
               >
                 View My Work
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -143,7 +143,7 @@ export default function Hero() {
                 href="https://www.linkedin.com/in/deepaknandhakumar/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-11 h-11 rounded-2xl flex items-center justify-center neo-btn bg-lightBg dark:bg-darkBg text-slate-600 dark:text-slate-400 hover:text-cyan-500 dark:hover:text-cyan-400 border border-white/20 dark:border-white/5 block"
+                className="w-11 h-11 rounded-2xl flex items-center justify-center neo-btn bg-lightBg dark:bg-darkBg text-slate-600 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 border border-white/20 dark:border-white/5 block"
                 title="LinkedIn Profile"
               >
                 <Linkedin size={18} />
@@ -154,7 +154,7 @@ export default function Hero() {
                 href="https://www.instagram.com/ig.singleop"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-11 h-11 rounded-2xl flex items-center justify-center neo-btn bg-lightBg dark:bg-darkBg text-slate-600 dark:text-slate-400 hover:text-cyan-500 dark:hover:text-cyan-400 border border-white/20 dark:border-white/5 block"
+                className="w-11 h-11 rounded-2xl flex items-center justify-center neo-btn bg-lightBg dark:bg-darkBg text-slate-600 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 border border-white/20 dark:border-white/5 block"
                 title="Instagram Profile"
               >
                 <Instagram size={18} />
@@ -165,7 +165,7 @@ export default function Hero() {
                 href="https://www.fiverr.com/sellers/ig_single/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-11 h-11 rounded-2xl flex items-center justify-center neo-btn bg-lightBg dark:bg-darkBg text-slate-600 dark:text-slate-400 hover:text-cyan-500 dark:hover:text-cyan-400 border border-white/20 dark:border-white/5 block"
+                className="w-11 h-11 rounded-2xl flex items-center justify-center neo-btn bg-lightBg dark:bg-darkBg text-slate-600 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 border border-white/20 dark:border-white/5 block"
                 title="Fiverr Seller Profile"
               >
                 <Fiverr size={18} />
@@ -176,7 +176,7 @@ export default function Hero() {
                 href="https://www.behance.net/deepak-nandhakumar"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-11 h-11 rounded-2xl flex items-center justify-center neo-btn bg-lightBg dark:bg-darkBg text-slate-600 dark:text-slate-400 hover:text-cyan-500 dark:hover:text-cyan-400 border border-white/20 dark:border-white/5 block"
+                className="w-11 h-11 rounded-2xl flex items-center justify-center neo-btn bg-lightBg dark:bg-darkBg text-slate-600 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 border border-white/20 dark:border-white/5 block"
                 title="Behance Profile"
               >
                 <Behance size={18} />
@@ -185,7 +185,7 @@ export default function Hero() {
             <Magnetic>
               <a
                 href="mailto:deepaksamu77@gmail.com"
-                className="w-11 h-11 rounded-2xl flex items-center justify-center neo-btn bg-lightBg dark:bg-darkBg text-slate-600 dark:text-slate-400 hover:text-cyan-500 dark:hover:text-cyan-400 border border-white/20 dark:border-white/5 block"
+                className="w-11 h-11 rounded-2xl flex items-center justify-center neo-btn bg-lightBg dark:bg-darkBg text-slate-600 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 border border-white/20 dark:border-white/5 block"
                 title="Send Email"
               >
                 <Mail size={18} />
@@ -194,7 +194,7 @@ export default function Hero() {
             <Magnetic>
               <a
                 href="tel:+919363112798"
-                className="w-11 h-11 rounded-2xl flex items-center justify-center neo-btn bg-lightBg dark:bg-darkBg text-slate-600 dark:text-slate-400 hover:text-cyan-500 dark:hover:text-cyan-400 border border-white/20 dark:border-white/5 block"
+                className="w-11 h-11 rounded-2xl flex items-center justify-center neo-btn bg-lightBg dark:bg-darkBg text-slate-600 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 border border-white/20 dark:border-white/5 block"
                 title="Call Phone"
               >
                 <Phone size={18} />
@@ -213,29 +213,29 @@ export default function Hero() {
           {/* Stack of Glassmorphic Cards */}
           <div className="relative w-full max-w-[360px] h-[360px] flex items-center justify-center">
             {/* Background glowing card */}
-            <div className="absolute w-[280px] h-[280px] rounded-3xl bg-gradient-to-tr from-cyan-500 to-purple-600 opacity-20 blur-2xl animate-pulse-slow"></div>
+            <div className="absolute w-[280px] h-[280px] rounded-3xl bg-gradient-to-tr from-emerald-500 to-indigo-600 opacity-20 blur-2xl animate-pulse-slow"></div>
 
             {/* Bottom Card - Education */}
             <div className="absolute w-[280px] p-5 rounded-3xl glass-panel shadow-lg -rotate-6 -translate-x-6 -translate-y-6 hover:rotate-0 hover:translate-x-0 hover:translate-y-0 transition-all duration-500 hover:z-10 group">
-              <div className="text-cyan-500 font-sora font-semibold text-xs mb-1">EDUCATION</div>
+              <div className="text-emerald-500 font-sora font-semibold text-xs mb-1">EDUCATION</div>
               <div className="font-outfit font-bold text-slate-800 dark:text-white">B.Tech AI &amp; Data Science</div>
               <div className="font-inter text-slate-400 text-xs mt-1">Muthayammal Eng. College (2025)</div>
             </div>
 
             {/* Middle Card - Experience */}
             <div className="absolute w-[280px] p-5 rounded-3xl glass-panel shadow-lg rotate-3 translate-x-6 translate-y-6 hover:rotate-0 hover:translate-x-0 hover:translate-y-0 transition-all duration-500 hover:z-10 group">
-              <div className="text-purple-500 font-sora font-semibold text-xs mb-1">EXPERIENCE</div>
+              <div className="text-indigo-500 font-sora font-semibold text-xs mb-1">EXPERIENCE</div>
               <div className="font-outfit font-bold text-slate-800 dark:text-white">Freelance UI Designer</div>
               <div className="font-inter text-slate-400 text-xs mt-1">Univally &amp; Hexaware Tech BPS</div>
             </div>
 
             {/* Top Interactive Glass Card */}
             <div className="absolute w-[290px] p-6 rounded-3xl glass-panel-strong shadow-2xl hover:scale-105 transition-all duration-500 z-10 border border-white/30 dark:border-white/10 flex flex-col items-center text-center">
-              <div className="w-24 h-24 rounded-full border-2 border-cyan-500/30 overflow-hidden mb-4 shadow-lg shadow-cyan-500/10">
+              <div className="w-24 h-24 rounded-full border-2 border-emerald-500/30 overflow-hidden mb-4 shadow-lg shadow-emerald-500/10">
                 <img src={profileImg} className="w-full h-full object-cover" alt="Deepak K N Profile" />
               </div>
               <div className="font-sora font-extrabold text-xl text-slate-800 dark:text-white mb-1">Deepak K N</div>
-              <div className="font-outfit text-sm text-cyan-600 dark:text-cyan-400 font-semibold mb-4">UI/UX &amp; AI Engineering</div>
+              <div className="font-outfit text-sm text-emerald-600 dark:text-emerald-400 font-semibold mb-4">UI/UX &amp; AI Engineering</div>
               
               <div className="w-full h-px bg-slate-200 dark:bg-slate-700/50 mb-4"></div>
               
