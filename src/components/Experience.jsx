@@ -55,7 +55,7 @@ export default function Experience() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.6, ease: 'easeOut', delay: idx * 0.15 }}
-              className="p-8 md:p-10 rounded-3xl glass-panel hover:neo-box-in transition-all duration-300 border border-white/20 dark:border-white/5 relative"
+              className="p-6 sm:p-8 md:p-10 rounded-3xl glass-panel hover:neo-box-in transition-all duration-300 border border-white/20 dark:border-white/5 relative"
             >
               {/* Highlight bar */}
               <div className="absolute top-0 left-8 right-8 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-b-full"></div>

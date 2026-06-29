@@ -194,7 +194,7 @@ export default function Contact() {
 
           {/* Column 2: Contact Form */}
           <div className="lg:col-span-7">
-            <div className="p-8 md:p-10 rounded-3xl glass-panel-strong shadow-xl border border-white/20 dark:border-white/5 relative">
+            <div className="p-6 md:p-10 rounded-3xl glass-panel-strong shadow-xl border border-white/20 dark:border-white/5 relative">
               <h3 className="font-sora font-bold text-2xl text-slate-800 dark:text-white mb-6 text-left">
                 Send a Message
               </h3>

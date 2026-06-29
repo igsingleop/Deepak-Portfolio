@@ -59,7 +59,7 @@ export default function About() {
               whileInView="visible"
               viewport={{ once: true, margin: '-100px' }}
               variants={cardVariants}
-              className="p-8 rounded-3xl glass-panel shadow-lg border border-white/20 dark:border-white/5 mb-8"
+              className="p-6 sm:p-8 rounded-3xl glass-panel shadow-lg border border-white/20 dark:border-white/5 mb-8"
             >
               <h3 className="font-sora font-bold text-2xl text-slate-800 dark:text-white mb-4">
                 My Objective
@@ -78,7 +78,7 @@ export default function About() {
               whileInView="visible"
               viewport={{ once: true, margin: '-100px' }}
               variants={cardVariants}
-              className="p-8 rounded-3xl neo-box-out bg-white dark:bg-darkCard border border-white/30 dark:border-white/5"
+              className="p-6 sm:p-8 rounded-3xl neo-box-out bg-white dark:bg-darkCard border border-white/30 dark:border-white/5"
             >
               <h3 className="font-sora font-bold text-xl text-slate-800 dark:text-white mb-6">
                 Personal Qualities
@@ -112,7 +112,11 @@ export default function About() {
               Education History
             </h3>
             
+<<<<<<< HEAD
             <div className="relative border-l-2 border-emerald-500/30 dark:border-emerald-500/15 ml-4 pl-8 space-y-10">
+=======
+            <div className="relative border-l-2 border-cyan-500/30 dark:border-cyan-500/15 ml-2 sm:ml-4 pl-6 sm:pl-8 space-y-8 sm:space-y-10">
+>>>>>>> 0a87d38d4e5dcd9df2bb7fee46e67e30030a7eea
               {education.map((item, idx) => (
                 <motion.div
                   key={idx}
@@ -123,8 +127,13 @@ export default function About() {
                   className="relative group"
                 >
                   {/* Timeline dot */}
+<<<<<<< HEAD
                   <span className="absolute -left-[45px] top-1.5 w-8 h-8 rounded-full bg-lightBg dark:bg-darkBg border-2 border-emerald-500 flex items-center justify-center shadow-md shadow-emerald-500/20 group-hover:scale-110 transition-transform">
                     <GraduationCap size={14} className="text-emerald-500" />
+=======
+                  <span className="absolute -left-[40px] sm:-left-[48px] top-1.5 w-8 h-8 rounded-full bg-lightBg dark:bg-darkBg border-2 border-cyan-500 flex items-center justify-center shadow-md shadow-cyan-500/20 group-hover:scale-110 transition-transform">
+                    <GraduationCap size={14} className="text-cyan-500" />
+>>>>>>> 0a87d38d4e5dcd9df2bb7fee46e67e30030a7eea
                   </span>
 
                   <div className="p-6 md:p-8 rounded-3xl glass-panel-strong hover:neo-box-in transition-all duration-300 border border-white/20 dark:border-white/5 relative">
