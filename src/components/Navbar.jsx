@@ -12,7 +12,7 @@ export default function Navbar({ theme, toggleTheme }) {
       setScrolled(window.scrollY > 20);
 
       // Section tracker for active state
-      const sections = ['home', 'about', 'skills', 'experience', 'projects', 'contact'];
+      const sections = ['home', 'about', 'skills', 'experience', 'portfolio', 'projects', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -37,6 +37,7 @@ export default function Navbar({ theme, toggleTheme }) {
     { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
     { name: 'Experience', href: '#experience' },
+    { name: 'Portfolio', href: '#portfolio' },
     { name: 'Projects', href: '#projects' },
     { name: 'Contact', href: '#contact' },
   ];

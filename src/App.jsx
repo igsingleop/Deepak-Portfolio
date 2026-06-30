@@ -6,6 +6,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
 import Experience from './components/Experience';
+import WorkPortfolio from './components/WorkPortfolio';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -102,6 +103,12 @@ function App() {
 
         {/* Experience Section */}
         <Experience />
+
+        {/* Divider */}
+        <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-slate-200 dark:via-slate-800 to-transparent"></div>
+
+        {/* Work Portfolio Section */}
+        <WorkPortfolio />
 
         {/* Divider */}
         <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-slate-200 dark:via-slate-800 to-transparent"></div>
