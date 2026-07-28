@@ -126,9 +126,6 @@ function App() {
         {/* Home/Hero Section */}
         <Hero />
         
-        {/* Divider */}
-        <div className="h-px w-full max-w-6xl mx-auto bg-gradient-to-r from-transparent via-slate-200 dark:via-slate-800/60 to-transparent"></div>
-
         {/* About Section */}
         <About />
 

@@ -41,7 +41,11 @@ export default function About() {
   };
 
   return (
-    <section id="about" className="py-24 relative overflow-hidden bg-slate-100/40 dark:bg-darkCard/20">
+    <section id="about" className="py-28 relative overflow-hidden bg-slate-100/40 dark:bg-darkCard/20">
+      {/* Seamless Top Blend Overlay from Hero */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-lightBg via-slate-100/20 to-transparent dark:from-darkBg dark:via-darkCard/10 dark:to-transparent pointer-events-none z-10" />
+      <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-[600px] h-[140px] bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-emerald-400/10 rounded-full blur-[90px] pointer-events-none -z-10" />
+
       {/* Background Glow */}
       <div className="absolute top-1/2 left-0 w-[400px] h-[400px] rounded-full glow-orb-violet -z-10 animate-float-slow opacity-60"></div>
       

@@ -4,7 +4,7 @@ import { ArrowRight, Mail, Phone, Sparkles, Award, Cpu, Layout, CheckCircle2 } f
 import profileImg from '../assets/IMG_5729.PNG';
 import Magnetic from './Magnetic';
 
-// High-End 3D Kinetic Animated Name Component with Interactive Hover & Wave Glow
+// High-End 3D Kinetic Animated Name Component with Glitch-Free Seamless Gradient & Wave Glow
 function AnimatedName({ text = "Deepak K N" }) {
   const letters = Array.from(text);
 
@@ -13,7 +13,7 @@ function AnimatedName({ text = "Deepak K N" }) {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.05,
+        staggerChildren: 0.04,
         delayChildren: 0.1,
       },
     },
@@ -22,54 +22,72 @@ function AnimatedName({ text = "Deepak K N" }) {
   const letterVariants = {
     hidden: {
       opacity: 0,
-      y: 35,
-      rotateX: -75,
-      scale: 0.7,
-      filter: "blur(6px)",
+      y: 28,
+      rotateX: -60,
+      scale: 0.85,
     },
     visible: {
       opacity: 1,
       y: 0,
       rotateX: 0,
       scale: 1,
-      filter: "blur(0px)",
       transition: {
         type: "spring",
-        stiffness: 340,
+        stiffness: 240,
         damping: 18,
+        mass: 0.7,
       },
     },
   };
 
   return (
     <motion.span
-      className="inline-flex flex-wrap items-center cursor-default group"
+      className="inline-flex flex-wrap items-center cursor-default py-1"
+      style={{ perspective: "1000px", perspectiveOrigin: "center" }}
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
-      <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-400 bg-clip-text text-transparent drop-shadow-[0_4px_25px_rgba(99,102,241,0.4)]">
-        {letters.map((char, index) => (
-          <motion.span
-            key={index}
-            variants={letterVariants}
-            whileHover={{
-              scale: 1.28,
-              y: -5,
-              rotate: index % 2 === 0 ? 8 : -8,
-              transition: { type: "spring", stiffness: 500, damping: 12 },
-            }}
-            className="inline-block"
-          >
-            {char === " " ? "\u00A0" : char}
-          </motion.span>
-        ))}
+      <span className="inline-flex flex-wrap items-center">
+        {letters.map((char, index) => {
+          const bgPos = (index / Math.max(letters.length - 1, 1)) * 100;
+          return (
+            <span
+              key={index}
+              className="inline-block relative cursor-pointer py-1 px-[1px] group/char"
+              style={{ perspective: "600px" }}
+            >
+              <motion.span
+                variants={letterVariants}
+                whileHover={{
+                  scale: 1.2,
+                  y: -6,
+                  rotate: index % 2 === 0 ? 5 : -5,
+                  transition: { type: "spring", stiffness: 320, damping: 14 },
+                }}
+                style={{
+                  backgroundImage: "linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #34d399 100%)",
+                  backgroundSize: `${letters.length * 100}% 100%`,
+                  backgroundPosition: `${bgPos}% 0%`,
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  display: "inline-block",
+                  transformStyle: "preserve-3d",
+                  willChange: "transform, opacity",
+                }}
+                className="inline-block transition-shadow duration-300 drop-shadow-[0_4px_18px_rgba(99,102,241,0.35)] group-hover/char:drop-shadow-[0_6px_22px_rgba(52,211,153,0.6)]"
+              >
+                {char === " " ? "\u00A0" : char}
+              </motion.span>
+            </span>
+          );
+        })}
       </span>
 
       <motion.span
-        animate={{ scale: [1, 1.25, 1], rotate: [0, 15, -15, 0] }}
+        animate={{ scale: [1, 1.2, 1], rotate: [0, 12, -12, 0] }}
         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-        className="ml-2.5 inline-block text-emerald-400"
+        className="ml-3 inline-block text-emerald-400 shrink-0"
       >
         <Sparkles size={28} className="inline drop-shadow-[0_0_12px_rgba(16,185,129,0.8)]" />
       </motion.span>
@@ -358,8 +376,11 @@ export default function Hero() {
 
           </div>
         </motion.div>
-
       </div>
+
+      {/* Smooth Seamless Blend Overlay into About Section */}
+      <div className="absolute bottom-0 left-0 right-0 h-36 bg-gradient-to-b from-transparent via-slate-100/30 to-slate-100/60 dark:via-darkCard/10 dark:to-darkCard/25 pointer-events-none z-10" />
+      <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-[700px] h-[140px] bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-emerald-400/10 rounded-full blur-[90px] pointer-events-none -z-10" />
     </section>
   );
 }
