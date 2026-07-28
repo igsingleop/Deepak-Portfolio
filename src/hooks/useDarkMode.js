@@ -7,9 +7,8 @@ export function useDarkMode() {
     if (savedTheme) {
       return savedTheme;
     }
-    // Check system preference
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    return systemPrefersDark ? 'dark' : 'light';
+    // Default to dark theme
+    return 'dark';
   });
 
   useEffect(() => {

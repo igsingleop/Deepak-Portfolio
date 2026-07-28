@@ -161,9 +161,9 @@ export default function WorkPortfolio() {
   };
 
   return (
-    <section id="portfolio" className="py-24 relative overflow-hidden bg-white/30 dark:bg-darkBg/20">
+    <section id="portfolio" className="py-24 relative overflow-hidden bg-slate-100/40 dark:bg-darkCard/20">
       {/* Background glowing orb */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full glow-orb-teal -z-10 animate-pulse-slow"></div>
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full glow-orb-violet -z-10 animate-pulse-glow opacity-50"></div>
 
       <div className="max-w-7xl mx-auto px-6">
 
@@ -175,32 +175,35 @@ export default function WorkPortfolio() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <span className="font-outfit text-xs font-bold uppercase tracking-widest text-emerald-500 dark:text-emerald-400 bg-emerald-500/10 px-3.5 py-1.5 rounded-full">
-              Client Showcase
+            <span className="font-outfit text-xs font-bold uppercase tracking-widest text-indigo-500 dark:text-indigo-400 bg-indigo-500/10 px-4 py-1.5 rounded-full border border-indigo-500/20">
+              Client Showcase &amp; Case Studies
             </span>
           </motion.div>
+          
           <motion.h2
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-sora font-extrabold text-3xl md:text-4xl text-slate-800 dark:text-white mt-4 mb-4"
+            className="font-sora font-extrabold text-3xl md:text-4xl text-slate-900 dark:text-white mt-4 mb-4"
           >
-            Work <span className="bg-gradient-to-r from-emerald-500 to-teal-600 bg-clip-text text-transparent">Portfolio</span>
+            Work <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-400 bg-clip-text text-transparent">Portfolio</span>
           </motion.h2>
+
           <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: 80 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="h-1 bg-emerald-500 mx-auto rounded-full"
+            className="h-1 bg-gradient-to-r from-indigo-500 to-emerald-400 mx-auto rounded-full"
           />
+
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="font-inter text-slate-500 dark:text-slate-400 text-sm md:text-base max-w-2xl mx-auto mt-4 leading-relaxed"
+            className="font-inter text-slate-600 dark:text-slate-400 text-sm md:text-base max-w-2xl mx-auto mt-4 leading-relaxed"
           >
             A compilation of professional client engagements, detailing real impact, user experience redesigns, and data-driven applications.
           </motion.p>

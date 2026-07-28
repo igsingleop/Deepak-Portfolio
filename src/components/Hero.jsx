@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Mail, Phone, MousePointerClick } from 'lucide-react';
-import profileImg from '../assets/profile.jpg';
+import { ArrowRight, Mail, Phone, Sparkles, Award, Cpu, Layout, CheckCircle2 } from 'lucide-react';
+import profileImg from '../assets/IMG_5729.PNG';
 import Magnetic from './Magnetic';
 
-const Linkedin = ({ size = 24, className }) => (
+const Linkedin = ({ size = 20, className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -23,7 +23,7 @@ const Linkedin = ({ size = 24, className }) => (
   </svg>
 );
 
-const Instagram = ({ size = 24, className }) => (
+const Instagram = ({ size = 20, className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -42,7 +42,7 @@ const Instagram = ({ size = 24, className }) => (
   </svg>
 );
 
-const Fiverr = ({ size = 24, className }) => (
+const Fiverr = ({ size = 20, className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -55,7 +55,7 @@ const Fiverr = ({ size = 24, className }) => (
   </svg>
 );
 
-const Behance = ({ size = 24, className }) => (
+const Behance = ({ size = 20, className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -74,189 +74,214 @@ export default function Hero() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.15,
       },
     },
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 25 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
-      {/* Background Glowing Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] rounded-full glow-orb-emerald -z-10 animate-float-slow"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] rounded-full glow-orb-indigo -z-10 animate-float-medium"></div>
+    <section id="home" className="relative min-h-screen flex items-center justify-center pt-28 pb-20 overflow-hidden">
+      {/* Antigravity Ambient Hero Spotlight & Glowing Orbs */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[750px] bg-gradient-to-tr from-indigo-600/20 via-purple-600/15 to-emerald-400/20 rounded-full blur-[130px] pointer-events-none -z-10 animate-pulse-glow" />
 
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
-        {/* Text Info */}
+      {/* Floating Anti-Gravity Levitating Spheres */}
+      <motion.div
+        animate={{ y: [0, -30, 0], rotate: [0, 15, 0], scale: [1, 1.08, 1] }}
+        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute top-24 left-8 w-28 h-28 rounded-full bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 backdrop-blur-md -z-10 shadow-glow-indigo hidden md:block"
+      />
+      <motion.div
+        animate={{ y: [0, 35, 0], rotate: [0, -15, 0], scale: [1, 1.1, 1] }}
+        transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+        className="absolute bottom-20 right-12 w-36 h-36 rounded-full bg-gradient-to-br from-emerald-400/20 to-cyan-500/20 border border-emerald-400/30 backdrop-blur-md -z-10 shadow-glow-emerald hidden md:block"
+      />
+
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center w-full">
+
+        {/* Left Column: Headline & Intro */}
         <motion.div
-          className="lg:col-span-7 flex flex-col text-left justify-center"
+          className="lg:col-span-7 flex flex-col text-left justify-center z-10"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 font-outfit text-xs font-semibold uppercase tracking-wider mb-6 w-fit">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-            Available for Opportunities
+          {/* Status pill */}
+          <motion.div variants={itemVariants} className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-slate-200/60 dark:bg-darkCard/80 border border-slate-300/40 dark:border-white/10 text-emerald-600 dark:text-emerald-400 font-outfit text-xs font-semibold uppercase tracking-widest mb-6 w-fit shadow-sm backdrop-blur-md">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+            </span>
+            Available for Opportunities &amp; Freelance
           </motion.div>
 
-          <motion.h1 variants={itemVariants} className="font-sora font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight text-slate-800 dark:text-white mb-6">
-            Hi, I'm <span className="bg-gradient-to-r from-emerald-500 via-teal-500 to-indigo-600 bg-clip-text text-transparent">Deepak K N</span>
+          {/* Main Title */}
+          <motion.h1 variants={itemVariants} className="font-sora font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] text-slate-900 dark:text-white mb-6 tracking-tight">
+            Hi, I'm <br className="hidden sm:inline" />
+            <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-400 bg-clip-text text-transparent drop-shadow-sm">
+              Deepak K N
+            </span>
           </motion.h1>
 
-          <motion.h2 variants={itemVariants} className="font-outfit font-semibold text-lg sm:text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
-            AI & Data Science Graduate <span className="text-emerald-500">&amp;</span> Freelance UI/UX Designer
+          {/* Subtitle */}
+          <motion.h2 variants={itemVariants} className="font-outfit font-semibold text-xl sm:text-2xl md:text-3xl text-slate-700 dark:text-slate-300 mb-6 leading-relaxed flex flex-wrap items-center gap-2">
+            <span>Front-End Developer</span>
+            <span className="text-indigo-500 font-bold">•</span>
+            <span className="text-emerald-500 dark:text-emerald-400">B.Tech AI &amp; Data Science</span>
           </motion.h2>
 
-          <motion.p variants={itemVariants} className="font-inter text-slate-500 dark:text-slate-400 text-base md:text-lg mb-8 max-w-xl leading-relaxed">
-            I am seeking a competitive and challenging environment where I can serve your organization and establish a career for myself, combining artificial intelligence insights with user-centered design excellence.
+          {/* Short Bio */}
+          <motion.p variants={itemVariants} className="font-inter text-slate-600 dark:text-slate-400 text-base md:text-lg mb-8 max-w-2xl leading-relaxed">
+            Combining artificial intelligence insights with intuitive, user-centric visual design to build high-impact web applications and sleek digital experiences.
           </motion.p>
 
-          {/* CTAs */}
-          <motion.div variants={itemVariants} className="flex flex-wrap gap-4 mb-8">
-            <Magnetic>
+          {/* Action Call To Actions */}
+          <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4 mb-10">
+            <Magnetic actionScale={0.15}>
               <a
-                href="#projects"
-                className="px-8 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-outfit font-semibold shadow-lg hover:shadow-emerald-500/30 transition-all flex items-center gap-2 group hover:scale-[1.02] active:scale-[0.98] block"
+                href="#portfolio"
+                className="px-8 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-emerald-500 text-white font-outfit font-bold shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 transition-all flex items-center gap-3 group hover:scale-[1.02] active:scale-[0.98] block"
               >
                 View My Work
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                <ArrowRight size={18} className="group-hover:translate-x-1.5 transition-transform" />
               </a>
             </Magnetic>
-            <Magnetic>
+
+            <Magnetic actionScale={0.15}>
               <a
                 href="#contact"
-                className="px-8 py-3.5 rounded-2xl bg-white dark:bg-darkCard text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-800 font-outfit font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-all neo-box-out hover:neo-box-in hover:scale-[1.02] active:scale-[0.98] block"
+                className="px-8 py-4 rounded-2xl bg-white/80 dark:bg-darkCard/80 text-slate-800 dark:text-white border border-slate-200 dark:border-white/10 font-outfit font-bold hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-all neo-box-out hover:scale-[1.02] active:scale-[0.98] backdrop-blur-md block"
               >
-                Contact Me
+                Let's Talk
               </a>
             </Magnetic>
           </motion.div>
 
-          {/* Quick Socials */}
-          <motion.div variants={itemVariants} className="flex gap-4">
-            <Magnetic>
-              <a
-                href="https://www.linkedin.com/in/deepaknandhakumar/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-11 h-11 rounded-2xl flex items-center justify-center neo-btn bg-lightBg dark:bg-darkBg text-slate-600 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 border border-white/20 dark:border-white/5 block"
-                title="LinkedIn Profile"
-              >
-                <Linkedin size={18} />
-              </a>
-            </Magnetic>
-            <Magnetic>
-              <a
-                href="https://www.instagram.com/ig.singleop"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-11 h-11 rounded-2xl flex items-center justify-center neo-btn bg-lightBg dark:bg-darkBg text-slate-600 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 border border-white/20 dark:border-white/5 block"
-                title="Instagram Profile"
-              >
-                <Instagram size={18} />
-              </a>
-            </Magnetic>
-            <Magnetic>
-              <a
-                href="https://www.fiverr.com/sellers/ig_single/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-11 h-11 rounded-2xl flex items-center justify-center neo-btn bg-lightBg dark:bg-darkBg text-slate-600 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 border border-white/20 dark:border-white/5 block"
-                title="Fiverr Seller Profile"
-              >
-                <Fiverr size={18} />
-              </a>
-            </Magnetic>
-            <Magnetic>
-              <a
-                href="https://www.behance.net/deepak-nandhakumar"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-11 h-11 rounded-2xl flex items-center justify-center neo-btn bg-lightBg dark:bg-darkBg text-slate-600 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 border border-white/20 dark:border-white/5 block"
-                title="Behance Profile"
-              >
-                <Behance size={18} />
-              </a>
-            </Magnetic>
-            <Magnetic>
-              <a
-                href="mailto:deepaksamu77@gmail.com"
-                className="w-11 h-11 rounded-2xl flex items-center justify-center neo-btn bg-lightBg dark:bg-darkBg text-slate-600 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 border border-white/20 dark:border-white/5 block"
-                title="Send Email"
-              >
-                <Mail size={18} />
-              </a>
-            </Magnetic>
-            <Magnetic>
-              <a
-                href="tel:+919363112798"
-                className="w-11 h-11 rounded-2xl flex items-center justify-center neo-btn bg-lightBg dark:bg-darkBg text-slate-600 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 border border-white/20 dark:border-white/5 block"
-                title="Call Phone"
-              >
-                <Phone size={18} />
-              </a>
-            </Magnetic>
+          {/* Social Links Bar */}
+          <motion.div variants={itemVariants} className="flex items-center gap-3">
+            <span className="font-outfit text-xs font-bold uppercase tracking-wider text-slate-400 mr-2">Connect:</span>
+
+            {[
+              { href: "https://www.linkedin.com/in/deepaknandhakumar/", icon: Linkedin, label: "LinkedIn" },
+              { href: "https://www.instagram.com/ig.singleop", icon: Instagram, label: "Instagram" },
+              { href: "https://www.fiverr.com/sellers/ig_single/", icon: Fiverr, label: "Fiverr" },
+              { href: "https://www.behance.net/deepak-nandhakumar", icon: Behance, label: "Behance" },
+              { href: "mailto:deepaksamu77@gmail.com", icon: Mail, label: "Email" },
+              { href: "tel:+919363112798", icon: Phone, label: "Phone" }
+            ].map((social, idx) => {
+              const IconComp = social.icon;
+              return (
+                <Magnetic key={idx} actionScale={0.25}>
+                  <a
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-11 h-11 rounded-2xl flex items-center justify-center neo-btn bg-white dark:bg-darkCard text-slate-600 dark:text-slate-400 hover:text-indigo-500 dark:hover:text-emerald-400 border border-slate-200/60 dark:border-white/5 transition-all block"
+                    title={social.label}
+                  >
+                    <IconComp size={19} />
+                  </a>
+                </Magnetic>
+              );
+            })}
           </motion.div>
         </motion.div>
 
-        {/* Visual Showcase (Glass Card Stack) */}
+        {/* Right Column: Prominent Large-Format Profile Picture Showcase */}
         <motion.div
-          className="lg:col-span-5 relative flex items-center justify-center"
-          initial={{ opacity: 0, scale: 0.85 }}
+          className="lg:col-span-5 relative flex items-center justify-center mt-6 lg:mt-0"
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          {/* Stack of Glassmorphic Cards */}
-          <div className="relative w-full max-w-[360px] h-[360px] flex items-center justify-center">
-            {/* Background glowing card */}
-            <div className="absolute w-[280px] h-[280px] rounded-3xl bg-gradient-to-tr from-emerald-500 to-indigo-600 opacity-20 blur-2xl animate-pulse-slow"></div>
+          {/* Main Container with generous sizing */}
+          <div className="relative w-full max-w-[420px] sm:max-w-[460px] aspect-[4/5] flex items-center justify-center p-4">
 
-            {/* Bottom Card - Education */}
-            <div className="absolute w-[280px] p-5 rounded-3xl glass-panel shadow-lg -rotate-6 -translate-x-6 -translate-y-6 hover:rotate-0 hover:translate-x-0 hover:translate-y-0 transition-all duration-500 hover:z-10 group">
-              <div className="text-emerald-500 font-sora font-semibold text-xs mb-1">EDUCATION</div>
-              <div className="font-outfit font-bold text-slate-800 dark:text-white">B.Tech AI &amp; Data Science</div>
-              <div className="font-inter text-slate-400 text-xs mt-1">Muthayammal Eng. College (2025)</div>
-            </div>
+            {/* Ambient Background Aura Rings */}
+            <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-tr from-indigo-600 via-purple-600 to-emerald-400 opacity-30 blur-3xl animate-pulse-glow"></div>
 
-            {/* Middle Card - Experience */}
-            <div className="absolute w-[280px] p-5 rounded-3xl glass-panel shadow-lg rotate-3 translate-x-6 translate-y-6 hover:rotate-0 hover:translate-x-0 hover:translate-y-0 transition-all duration-500 hover:z-10 group">
-              <div className="text-indigo-500 font-sora font-semibold text-xs mb-1">EXPERIENCE</div>
-              <div className="font-outfit font-bold text-slate-800 dark:text-white">Freelance UI Designer</div>
-              <div className="font-inter text-slate-400 text-xs mt-1">Univally &amp; Hexaware Tech BPS</div>
-            </div>
+            {/* Animated Rotating Gradient Frame Border */}
+            <div className="absolute -inset-1 rounded-[2.5rem] bg-gradient-to-r from-indigo-500 via-teal-400 to-emerald-500 opacity-60 blur-md animate-spin-slow"></div>
 
-            {/* Top Interactive Glass Card */}
-            <div className="absolute w-[290px] p-6 rounded-3xl glass-panel-strong shadow-2xl hover:scale-105 transition-all duration-500 z-10 border border-white/30 dark:border-white/10 flex flex-col items-center text-center">
-              <div className="w-24 h-24 rounded-full border-2 border-emerald-500/30 overflow-hidden mb-4 shadow-lg shadow-emerald-500/10">
-                <img src={profileImg} className="w-full h-full object-cover" alt="Deepak K N Profile" />
-              </div>
-              <div className="font-sora font-extrabold text-xl text-slate-800 dark:text-white mb-1">Deepak K N</div>
-              <div className="font-outfit text-sm text-emerald-600 dark:text-emerald-400 font-semibold mb-4">UI/UX &amp; AI Engineering</div>
-              
-              <div className="w-full h-px bg-slate-200 dark:bg-slate-700/50 mb-4"></div>
-              
-              <div className="grid grid-cols-3 gap-2 w-full text-center">
-                <div>
-                  <div className="font-sora font-bold text-lg text-slate-800 dark:text-white">100%</div>
-                  <div className="text-[10px] text-slate-400 uppercase font-semibold">Dedication</div>
+            {/* Profile Image Main Card Frame */}
+            <div className="relative w-full h-full rounded-[2.2rem] overflow-hidden glass-panel-strong border-2 border-white/50 dark:border-white/10 shadow-2xl group flex flex-col justify-end">
+
+              {/* Profile Image - Clean & Unobscured */}
+              <img
+                src={profileImg}
+                alt="Deepak K N Profile Showcase"
+                className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+
+              {/* Direct Name & Certification Text (No Square Box Container Layer) */}
+              <div className="relative z-10 p-6 text-left">
+                <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-500/85 backdrop-blur-md text-white font-outfit text-xs font-bold mb-2 shadow-md">
+                  <CheckCircle2 size={13} />
+                  GUVI Certified UI/UX Specialist
                 </div>
-                <div className="border-x border-slate-200 dark:border-slate-700/50">
-                  <div className="font-sora font-bold text-lg text-slate-800 dark:text-white">GUVI</div>
-                  <div className="text-[10px] text-slate-400 uppercase font-semibold">Certified</div>
-                </div>
-                <div>
-                  <div className="font-sora font-bold text-lg text-slate-800 dark:text-white">Figma</div>
-                  <div className="text-[10px] text-slate-400 uppercase font-semibold">Expert</div>
-                </div>
+                <h3 className="font-sora font-extrabold text-2xl text-white tracking-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]">
+                  Deepak K N
+                </h3>
+                <p className="font-inter text-slate-100 text-xs mt-0.5 font-semibold tracking-wide drop-shadow-[0_1.5px_4px_rgba(0,0,0,0.8)]">
+                  UI &amp; Front-End Developer
+                </p>
               </div>
             </div>
+
+            {/* Floating Trendy Badge 1: Top-Left AI/Data */}
+            <motion.div
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute -top-3 -left-4 sm:-left-6 p-3.5 rounded-2xl glass-panel-strong shadow-xl border border-white/40 dark:border-white/10 flex items-center gap-3 backdrop-blur-xl z-20"
+            >
+              <div className="p-2.5 rounded-xl bg-indigo-500/20 text-indigo-500 dark:text-indigo-400">
+                <Cpu size={20} />
+              </div>
+              <div className="text-left">
+                <div className="font-sora font-bold text-xs text-slate-800 dark:text-white">Front-End Developer</div>
+                <div className="font-inter text-[10px] text-slate-500 dark:text-slate-400">Carrezza Global Solutions Pvt Ltd</div>
+              </div>
+            </motion.div>
+
+            {/* Floating Trendy Badge 2: Bottom-Right Client Projects */}
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+              className="absolute -bottom-4 -right-4 sm:-right-6 p-3.5 rounded-2xl glass-panel-strong shadow-xl border border-white/40 dark:border-white/10 flex items-center gap-3 backdrop-blur-xl z-20"
+            >
+              <div className="p-2.5 rounded-xl bg-emerald-500/20 text-emerald-600 dark:text-emerald-400">
+                <Sparkles size={20} />
+              </div>
+              <div className="text-left">
+                <div className="font-sora font-bold text-xs text-slate-800 dark:text-white">Figma &amp; Prototyping</div>
+                <div className="font-inter text-[10px] text-slate-500 dark:text-slate-400">100% Client Dedication</div>
+              </div>
+            </motion.div>
+
+            {/* Floating Badge 3: Top-Right Experience */}
+            <motion.div
+              animate={{ x: [0, 8, 0] }}
+              transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+              className="absolute top-1/3 -right-6 sm:-right-8 p-3 rounded-2xl glass-panel-strong shadow-lg border border-white/40 dark:border-white/10 flex items-center gap-2.5 backdrop-blur-xl z-20 hidden sm:flex"
+            >
+              <div className="p-2 rounded-xl bg-violet-500/20 text-violet-500">
+                <Layout size={18} />
+              </div>
+              <div className="text-left pr-2">
+                <div className="font-sora font-bold text-xs text-slate-800 dark:text-white">UI Developer</div>
+                <div className="font-outfit text-[10px] text-slate-400">Univally</div>
+              </div>
+            </motion.div>
+
           </div>
         </motion.div>
+
       </div>
     </section>
   );
 }
+

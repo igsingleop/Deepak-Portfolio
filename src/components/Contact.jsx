@@ -141,17 +141,42 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden bg-slate-50/50 dark:bg-slate-900/30">
+    <section id="contact" className="py-24 relative overflow-hidden bg-slate-100/40 dark:bg-darkCard/20">
       {/* Background Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-[350px] h-[350px] rounded-full glow-orb-indigo -z-10 animate-float-slow"></div>
+      <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full glow-orb-indigo -z-10 animate-float-slow opacity-60"></div>
+      <div className="absolute bottom-10 right-10 w-[450px] h-[450px] rounded-full glow-orb-emerald -z-10 animate-pulse-glow opacity-50"></div>
 
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Heading */}
         <div className="text-center mb-16">
-          <h2 className="font-sora font-extrabold text-3xl md:text-4xl text-slate-800 dark:text-white mb-4">
-            Get In <span className="bg-gradient-to-r from-emerald-500 to-teal-600 bg-clip-text text-transparent">Touch</span>
-          </h2>
-          <div className="h-1 w-20 bg-emerald-500 mx-auto rounded-full"></div>
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <span className="font-outfit text-xs font-bold uppercase tracking-widest text-indigo-500 dark:text-indigo-400 bg-indigo-500/10 px-4 py-1.5 rounded-full border border-indigo-500/20">
+              Let's Connect
+            </span>
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="font-sora font-extrabold text-3xl md:text-4xl text-slate-900 dark:text-white mt-4 mb-4"
+          >
+            Get In <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-400 bg-clip-text text-transparent">Touch</span>
+          </motion.h2>
+
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: 80 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="h-1 bg-gradient-to-r from-indigo-500 to-emerald-400 mx-auto rounded-full"
+          />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">

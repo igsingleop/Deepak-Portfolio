@@ -47,24 +47,24 @@ export default function Navbar({ theme, toggleTheme }) {
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
         <Magnetic actionScale={0.15}>
-          <a href="#home" className="font-sora font-extrabold text-xl tracking-tight flex items-center gap-1 group block">
-            <span className="bg-gradient-to-r from-emerald-500 to-teal-600 bg-clip-text text-transparent">Deepak</span>
-            <span className="text-slate-800 dark:text-white">K N</span>
-            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <a href="#home" className="font-sora font-extrabold text-xl sm:text-2xl tracking-tight flex items-center gap-1.5 group block">
+            <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-400 bg-clip-text text-transparent">Deepak</span>
+            <span className="text-slate-900 dark:text-white">K N</span>
+            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
           </a>
         </Magnetic>
 
         {/* Desktop Nav Links */}
-        <div className="hidden md:flex items-center gap-8">
-          <div className="flex gap-1 bg-slate-200/50 dark:bg-slate-800/40 p-1.5 rounded-full backdrop-blur-sm border border-slate-300/20 dark:border-white/5">
+        <div className="hidden md:flex items-center gap-6">
+          <div className="flex gap-1 bg-slate-200/60 dark:bg-darkCard/80 p-1.5 rounded-full backdrop-blur-md border border-slate-300/40 dark:border-white/10 shadow-sm">
             {navLinks.map((link) => (
-              <Magnetic key={link.name} actionScale={0.2}>
+              <Magnetic key={link.name} actionScale={0.15}>
                 <a
                   href={link.href}
-                  className={`font-outfit text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-300 block ${
+                  className={`font-outfit text-xs font-semibold px-4 py-2 rounded-full transition-all duration-300 block ${
                     activeSection === link.href.slice(1)
-                      ? 'bg-white dark:bg-slate-900 text-emerald-600 dark:text-emerald-400 shadow-sm font-semibold'
-                      : 'text-slate-600 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400'
+                      ? 'bg-white dark:bg-slate-900 text-indigo-600 dark:text-emerald-400 shadow-md font-bold'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                   }`}
                 >
                   {link.name}
@@ -73,12 +73,12 @@ export default function Navbar({ theme, toggleTheme }) {
             ))}
           </div>
 
-          {/* Neomorphic Theme Toggle */}
-          <Magnetic>
+          {/* Theme Toggle */}
+          <Magnetic actionScale={0.2}>
             <button
               onClick={toggleTheme}
               id="theme-toggle-btn"
-              className="w-10 h-10 rounded-full flex items-center justify-center neo-btn bg-lightBg dark:bg-darkBg border border-white/40 dark:border-white/5 text-slate-700 dark:text-yellow-400"
+              className="w-10 h-10 rounded-full flex items-center justify-center neo-btn bg-white dark:bg-darkCard border border-slate-200 dark:border-white/10 text-slate-700 dark:text-yellow-400 hover:scale-105 transition-transform"
               aria-label="Toggle Theme"
             >
               {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
