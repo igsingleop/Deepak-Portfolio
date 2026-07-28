@@ -115,12 +115,6 @@ function App() {
       {/* Custom Cursor */}
       <CustomCursor />
 
-      {/* Floating Glowing Scroll Progress Bar */}
-      <motion.div 
-        className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-indigo-500 via-emerald-400 to-cyan-500 origin-left z-[99] shadow-[0_1px_12px_rgba(99,102,241,0.5)]" 
-        style={{ scaleX }} 
-      />
-
       {/* Decorative Background Mesh Particles */}
       <BackgroundParticles />
       

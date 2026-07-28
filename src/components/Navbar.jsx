@@ -56,7 +56,7 @@ export default function Navbar({ theme, toggleTheme }) {
 
         {/* Desktop Nav Links */}
         <div className="hidden md:flex items-center gap-6">
-          <div className="flex gap-1 bg-slate-200/60 dark:bg-darkCard/80 p-1.5 rounded-full backdrop-blur-md border border-slate-300/40 dark:border-white/10 shadow-sm">
+          <div className="flex gap-1 bg-slate-200/50 dark:bg-darkCard/80 p-1.5 rounded-full backdrop-blur-md border border-slate-200/20 dark:border-slate-800/40 shadow-sm">
             {navLinks.map((link) => (
               <Magnetic key={link.name} actionScale={0.15}>
                 <a
@@ -78,7 +78,7 @@ export default function Navbar({ theme, toggleTheme }) {
             <button
               onClick={toggleTheme}
               id="theme-toggle-btn"
-              className="w-10 h-10 rounded-full flex items-center justify-center neo-btn bg-white dark:bg-darkCard border border-slate-200 dark:border-white/10 text-slate-700 dark:text-yellow-400 hover:scale-105 transition-transform"
+              className="w-10 h-10 rounded-full flex items-center justify-center neo-btn bg-white dark:bg-darkCard border border-slate-200/20 dark:border-slate-800/40 text-slate-700 dark:text-yellow-400 hover:scale-105 transition-transform"
               aria-label="Toggle Theme"
             >
               {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}

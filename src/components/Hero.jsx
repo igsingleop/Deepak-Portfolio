@@ -1,8 +1,81 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Mail, Phone, Sparkles, Award, Cpu, Layout, CheckCircle2 } from 'lucide-react';
 import profileImg from '../assets/IMG_5729.PNG';
 import Magnetic from './Magnetic';
+
+// High-End 3D Kinetic Animated Name Component with Interactive Hover & Wave Glow
+function AnimatedName({ text = "Deepak K N" }) {
+  const letters = Array.from(text);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const letterVariants = {
+    hidden: {
+      opacity: 0,
+      y: 35,
+      rotateX: -75,
+      scale: 0.7,
+      filter: "blur(6px)",
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      rotateX: 0,
+      scale: 1,
+      filter: "blur(0px)",
+      transition: {
+        type: "spring",
+        stiffness: 340,
+        damping: 18,
+      },
+    },
+  };
+
+  return (
+    <motion.span
+      className="inline-flex flex-wrap items-center cursor-default group"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-400 bg-clip-text text-transparent drop-shadow-[0_4px_25px_rgba(99,102,241,0.4)]">
+        {letters.map((char, index) => (
+          <motion.span
+            key={index}
+            variants={letterVariants}
+            whileHover={{
+              scale: 1.28,
+              y: -5,
+              rotate: index % 2 === 0 ? 8 : -8,
+              transition: { type: "spring", stiffness: 500, damping: 12 },
+            }}
+            className="inline-block"
+          >
+            {char === " " ? "\u00A0" : char}
+          </motion.span>
+        ))}
+      </span>
+
+      <motion.span
+        animate={{ scale: [1, 1.25, 1], rotate: [0, 15, -15, 0] }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+        className="ml-2.5 inline-block text-emerald-400"
+      >
+        <Sparkles size={28} className="inline drop-shadow-[0_0_12px_rgba(16,185,129,0.8)]" />
+      </motion.span>
+    </motion.span>
+  );
+}
 
 const Linkedin = ({ size = 20, className }) => (
   <svg
@@ -119,12 +192,10 @@ export default function Hero() {
             Available for Opportunities &amp; Freelance
           </motion.div>
 
-          {/* Main Title */}
+          {/* Main Title with 3D Kinetic Reveal */}
           <motion.h1 variants={itemVariants} className="font-sora font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] text-slate-900 dark:text-white mb-6 tracking-tight">
             Hi, I'm <br className="hidden sm:inline" />
-            <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-400 bg-clip-text text-transparent drop-shadow-sm">
-              Deepak K N
-            </span>
+            <AnimatedName text="Deepak K N" />
           </motion.h1>
 
           {/* Subtitle */}
@@ -217,19 +288,27 @@ export default function Hero() {
                 className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />
 
-              {/* Direct Name & Certification Text (No Square Box Container Layer) */}
-              <div className="relative z-10 p-6 text-left">
-                <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-500/85 backdrop-blur-md text-white font-outfit text-xs font-bold mb-2 shadow-md">
+              {/* Direct Name & Certification Text with Smooth Floating Motion */}
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                className="relative z-10 p-6 text-left"
+              >
+                <motion.div
+                  animate={{ y: [0, -4, 0] }}
+                  transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.2 }}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-500/85 backdrop-blur-md text-white font-outfit text-xs font-bold mb-2 shadow-md"
+                >
                   <CheckCircle2 size={13} />
                   GUVI Certified UI/UX Specialist
-                </div>
+                </motion.div>
                 <h3 className="font-sora font-extrabold text-2xl text-white tracking-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]">
                   Deepak K N
                 </h3>
                 <p className="font-inter text-slate-100 text-xs mt-0.5 font-semibold tracking-wide drop-shadow-[0_1.5px_4px_rgba(0,0,0,0.8)]">
                   UI &amp; Front-End Developer
                 </p>
-              </div>
+              </motion.div>
             </div>
 
             {/* Floating Trendy Badge 1: Top-Left AI/Data */}

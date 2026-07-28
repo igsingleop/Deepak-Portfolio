@@ -105,7 +105,7 @@ export default function Contact() {
     {
       icon: <MapPin size={22} />,
       label: 'Location',
-      value: 'Perundurai, Erode, Tamil Nadu, India',
+      value: 'Erode, Tamil Nadu, India',
       subValue: '20/21A North Car Street, Ariyankadu, Kanjikovil, 638116',
       href: 'https://maps.google.com/?q=Kanjikovil,+Perundurai,+Erode',
       target: '_blank',

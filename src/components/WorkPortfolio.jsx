@@ -45,6 +45,7 @@ const clientProjects = [
     client: 'E-Commerce Platform',
     category: 'UI/UX Design',
     duration: 'Jul 2025 - Jan 2026',
+    liveUrl: 'https://thesinglestore.xyz/',
     summary: 'Developed an interactive anomalies dashboard visualizing transactional data, flagging duplicate charges, and tracking SLAs.',
     description: 'Designed and built a real-time analytics interface to visualize banking operations transaction streams. Working in an SLA-driven BPS operation at Hexaware, I bridged operational workflow requirements with an interactive visualization platform to replace manual audits.',
     bullets: [
@@ -273,9 +274,24 @@ export default function WorkPortfolio() {
                           </h3>
                         </div>
                       </div>
-                      <span className="p-1.5 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 text-slate-400 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors">
-                        <ArrowUpRight size={14} />
-                      </span>
+                      <div className="flex items-center gap-2">
+                        {project.liveUrl && (
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-outfit text-xs font-bold border border-emerald-500/20 hover:bg-emerald-500 hover:text-white transition-all flex items-center gap-1"
+                            title="Visit Live Site"
+                          >
+                            <span>Live Site</span>
+                            <ExternalLink size={12} />
+                          </a>
+                        )}
+                        <span className="p-1.5 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 text-slate-400 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors">
+                          <ArrowUpRight size={14} />
+                        </span>
+                      </div>
                     </div>
 
                     <p className="font-inter text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-6">
@@ -428,8 +444,22 @@ export default function WorkPortfolio() {
 
                 <div className="h-px bg-slate-200 dark:bg-slate-800/80 mb-6"></div>
 
-                {/* Footer close button option */}
-                <div className="flex justify-end">
+                {/* Footer action buttons */}
+                <div className="flex flex-wrap items-center justify-between gap-4">
+                  {selectedProject.liveUrl ? (
+                    <Magnetic>
+                      <a
+                        href={selectedProject.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 via-purple-600 to-emerald-500 text-white font-outfit text-sm font-bold shadow-md hover:scale-105 transition-all flex items-center gap-2 block"
+                      >
+                        <span>Visit Live Site</span>
+                        <ExternalLink size={16} />
+                      </a>
+                    </Magnetic>
+                  ) : <div />}
+
                   <Magnetic>
                     <button
                       onClick={() => setSelectedProject(null)}
