@@ -18,7 +18,7 @@ export default function Footer() {
             <span className="text-slate-900 dark:text-white">K N</span>
           </div>
           <p className="font-outfit text-xs text-slate-500 dark:text-slate-400">
-            &copy; {currentYear} Deepak K N. Crafted with AI &amp; UI/UX Excellence. All Rights Reserved.
+            &copy; {currentYear} Deepak K N. All Rights Reserved.
           </p>
         </div>
         
