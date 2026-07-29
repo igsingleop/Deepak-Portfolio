@@ -1,8 +1,46 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import { GraduationCap, Calendar, Award, Sparkles, Target, Compass, HeartHandshake } from 'lucide-react';
 
 export default function About() {
+  const educationRef = useRef(null);
+  const logo1Ref = useRef(null);
+  const logo3Ref = useRef(null);
+  const [lineHeight, setLineHeight] = useState(0);
+
+  const { scrollYProgress } = useScroll({
+    target: educationRef,
+    offset: ["start 75%", "end 50%"],
+  });
+
+  const scaleY = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  useEffect(() => {
+    const updateLineHeight = () => {
+      if (logo1Ref.current && logo3Ref.current) {
+        const rect1 = logo1Ref.current.getBoundingClientRect();
+        const rect3 = logo3Ref.current.getBoundingClientRect();
+        // Distance from bottom of Logo 1 to top of Logo 3
+        const distance = rect3.top - rect1.bottom;
+        if (distance > 0) {
+          setLineHeight(distance);
+        }
+      }
+    };
+
+    updateLineHeight();
+    const timer = setTimeout(updateLineHeight, 200);
+    window.addEventListener('resize', updateLineHeight);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', updateLineHeight);
+    };
+  }, []);
+
   const education = [
     {
       degree: 'B.Tech Artificial Intelligence & Data Science',
@@ -59,10 +97,10 @@ export default function About() {
             transition={{ duration: 0.5 }}
           >
             <span className="font-outfit text-xs font-bold uppercase tracking-widest text-indigo-500 dark:text-indigo-400 bg-indigo-500/10 px-4 py-1.5 rounded-full border border-indigo-500/20">
-              Biography &amp; Background
+              Personal Overview
             </span>
           </motion.div>
-          
+
           <motion.h2
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -70,9 +108,9 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="font-sora font-extrabold text-3xl md:text-4xl text-slate-900 dark:text-white mt-4 mb-4"
           >
-            About <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-400 bg-clip-text text-transparent">Me</span>
+            About <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-400 bg-clip-text text-transparent">Me</span> & Qualifications
           </motion.h2>
-          
+
           <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: 80 }}
@@ -82,69 +120,46 @@ export default function About() {
           />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        {/* 2-Column Grid: Skills Radar & Education History */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
-          {/* Column 1: Objective & Personal Qualities */}
-          <div className="lg:col-span-5 flex flex-col text-left space-y-8">
-            
-            {/* Objective Card */}
+          {/* Column 1: Core Professional Strengths */}
+          <div className="lg:col-span-5 flex flex-col justify-start">
+            <h3 className="font-sora font-bold text-2xl text-slate-900 dark:text-white mb-6 text-left">
+              Professional Attributes
+            </h3>
+
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: '-80px' }}
-              variants={cardVariants}
-              className="p-8 rounded-3xl glass-panel-strong border border-white/50 dark:border-white/10 relative group hover:shadow-glow-indigo transition-all duration-500"
+              viewport={{ once: true, margin: '-60px' }}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.12 } }
+              }}
+              className="p-7 sm:p-8 rounded-3xl glass-panel-strong border border-white/50 dark:border-white/10 relative space-y-6 text-left shadow-xl"
             >
-              <div className="absolute top-0 left-8 right-8 h-1 bg-gradient-to-r from-indigo-500 to-emerald-400 rounded-b-full"></div>
-              
-              <h3 className="font-sora font-bold text-2xl text-slate-900 dark:text-white mb-4 flex items-center gap-3">
-                <span className="p-2.5 rounded-2xl bg-indigo-500/10 text-indigo-500">
-                  <Target size={22} />
-                </span>
-                Career Objective
-              </h3>
-
-              <p className="font-inter text-slate-700 dark:text-slate-300 leading-relaxed italic text-sm md:text-base mb-4 border-l-2 border-indigo-500/40 pl-4 py-1">
-                "I am seeking a competitive and challenging environment where I can serve your organization and establish a career for myself."
-              </p>
-
-              <p className="font-inter text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
-                Combining a technical background in Artificial Intelligence &amp; Data Science with hands-on UI/UX design experience, I translate raw technical capabilities into polished, human-centered web solutions.
-              </p>
-            </motion.div>
-
-            {/* Personal Qualities Progress Card */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: '-80px' }}
-              variants={cardVariants}
-              className="p-8 rounded-3xl neo-box-out bg-white dark:bg-darkCard border border-slate-200/60 dark:border-white/5"
-            >
-              <h3 className="font-sora font-bold text-xl text-slate-900 dark:text-white mb-6 flex items-center justify-between">
-                <span>Core Strengths</span>
-                <span className="text-xs font-outfit font-semibold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-500">
-                  Self Evaluated
-                </span>
-              </h3>
-
               <div className="space-y-6">
-                {personalSkills.map((skill) => {
-                  const IconComp = skill.icon;
+                {personalSkills.map((skill, idx) => {
+                  const IconComponent = skill.icon;
                   return (
-                    <div key={skill.name}>
-                      <div className="flex justify-between items-center font-outfit text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
-                        <span className="flex items-center gap-2">
-                          <IconComp size={16} className="text-indigo-500" />
-                          {skill.name}
+                    <div key={idx} className="space-y-2">
+                      <div className="flex justify-between items-center font-outfit text-sm font-semibold text-slate-700 dark:text-slate-300">
+                        <div className="flex items-center gap-2.5">
+                          <span className="p-1.5 rounded-lg bg-indigo-500/10 text-indigo-500 dark:text-indigo-400">
+                            <IconComponent size={16} />
+                          </span>
+                          <span>{skill.name}</span>
+                        </div>
+                        <span className="font-sora text-xs font-bold text-indigo-600 dark:text-emerald-400">
+                          {skill.level}%
                         </span>
-                        <span className="text-indigo-600 dark:text-emerald-400 font-sora font-bold text-xs">{skill.level}%</span>
                       </div>
-                      
-                      {/* Animated Progress Bar */}
-                      <div className="h-3 w-full rounded-full bg-slate-200/80 dark:bg-slate-950 p-0.5 border border-slate-300/10 shadow-inner">
+
+                      {/* Progress Bar Track */}
+                      <div className="h-2 w-full bg-slate-200/80 dark:bg-slate-900 rounded-full overflow-hidden neo-box-in">
                         <motion.div
-                          className="h-full rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-400 shadow-sm"
+                          className="h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-400 rounded-full"
                           initial={{ width: 0 }}
                           whileInView={{ width: `${skill.level}%` }}
                           viewport={{ once: true }}
@@ -170,7 +185,17 @@ export default function About() {
               </span>
             </div>
 
-            <div className="relative border-l-2 border-indigo-500/30 dark:border-indigo-500/20 ml-3 sm:ml-6 pl-6 sm:pl-10 space-y-8">
+            <div ref={educationRef} className="relative pl-12 sm:pl-16 space-y-8">
+              {/* Single Continuous Scroll-Driven Line starting from bottom edge of Logo 1 to top edge of Logo 3 */}
+              <motion.div
+                className="absolute left-[18px] top-[56px] w-1 bg-gradient-to-b from-indigo-500 via-purple-500 to-emerald-400 rounded-full origin-top shadow-[0_0_12px_rgba(99,102,241,0.7)] z-10"
+                style={{
+                  scaleY,
+                  height: lineHeight ? `${lineHeight}px` : 'calc(100% - 220px)',
+                  willChange: 'transform'
+                }}
+              />
+
               {education.map((item, idx) => (
                 <motion.div
                   key={idx}
@@ -180,8 +205,11 @@ export default function About() {
                   variants={cardVariants}
                   className="relative group"
                 >
-                  {/* Timeline Node Dot */}
-                  <span className="absolute -left-[41px] sm:-left-[57px] top-1.5 w-10 h-10 rounded-2xl bg-white dark:bg-darkCard border-2 border-indigo-500 flex items-center justify-center shadow-lg shadow-indigo-500/20 group-hover:scale-110 group-hover:bg-indigo-500 group-hover:text-white transition-all duration-300 text-indigo-500">
+                  {/* Timeline Node Logo Dot */}
+                  <span
+                    ref={idx === 0 ? logo1Ref : idx === 2 ? logo3Ref : null}
+                    className="absolute -left-[48px] sm:-left-[64px] top-4 w-10 h-10 rounded-2xl bg-white dark:bg-[#0D111A] border-2 border-indigo-500 flex items-center justify-center shadow-lg shadow-indigo-500/20 z-20 group-hover:scale-110 group-hover:bg-indigo-500 group-hover:text-white transition-all duration-300 text-indigo-500"
+                  >
                     <GraduationCap size={18} />
                   </span>
 
@@ -254,4 +282,3 @@ export default function About() {
     </section>
   );
 }
-

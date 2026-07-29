@@ -16,8 +16,6 @@ import {
 } from 'lucide-react';
 import Magnetic from './Magnetic';
 
-const categories = ['All', 'UI/UX Design', 'Web Apps', 'AI & Data'];
-
 const clientProjects = [
   {
     id: 1,
@@ -103,12 +101,7 @@ const clientProjects = [
 ];
 
 export default function WorkPortfolio() {
-  const [activeCategory, setActiveCategory] = useState('All');
   const [selectedProject, setSelectedProject] = useState(null);
-
-  const filteredProjects = activeCategory === 'All'
-    ? clientProjects
-    : clientProjects.filter(p => p.category === activeCategory);
 
   // Animations variants
   const containerVariants = {
@@ -210,31 +203,6 @@ export default function WorkPortfolio() {
           </motion.p>
         </div>
 
-        {/* Categories Tab Selector */}
-        <div className="flex justify-center mb-12">
-          <div className="flex flex-wrap justify-center gap-2 p-1.5 rounded-2xl bg-slate-200/50 dark:bg-slate-800/40 border border-slate-300/20 dark:border-white/5 backdrop-blur-sm">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`relative px-5 py-2 rounded-xl font-outfit text-sm font-semibold transition-all duration-300 ${activeCategory === cat
-                  ? 'text-emerald-600 dark:text-emerald-400'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-                  }`}
-              >
-                {activeCategory === cat && (
-                  <motion.div
-                    layoutId="activeTabIndicator"
-                    className="absolute inset-0 bg-white dark:bg-slate-950 rounded-xl shadow-sm border border-slate-200/50 dark:border-slate-800/50 z-0"
-                    transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-                  />
-                )}
-                <span className="relative z-10">{cat}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-
         {/* Project Grid */}
         <motion.div
           variants={containerVariants}
@@ -244,7 +212,7 @@ export default function WorkPortfolio() {
           className="grid grid-cols-1 md:grid-cols-2 gap-8"
         >
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project) => {
+            {clientProjects.map((project) => {
               const ProjectIcon = project.icon;
               return (
                 <motion.div
