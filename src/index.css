@@ -5,15 +5,10 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    font-family: 'Inter', sans-serif;
   }
   
   body {
-    @apply antialiased overflow-x-hidden bg-[#FFFDFB] text-[#2B2926] transition-colors duration-300 dark:bg-[#181614] dark:text-[#FFFDFB];
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', 'Sora', sans-serif;
+    @apply antialiased overflow-x-hidden transition-colors duration-300 bg-lightBg dark:bg-darkBg text-slate-800 dark:text-slate-200;
   }
 }
 
@@ -23,86 +18,103 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #FFFDFB;
-}
-
-.dark ::-webkit-scrollbar-track {
-  background: #181614;
+  @apply bg-lightBg dark:bg-darkBg;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ED7751;
-  border-radius: 9999px;
+  @apply bg-slate-300 dark:bg-slate-800 rounded-full hover:bg-emerald-500 dark:hover:bg-emerald-500 transition-colors;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #D9603B;
+/* Glassmorphism Styles */
+.glass-panel {
+  @apply bg-white/70 dark:bg-darkCard/70 backdrop-blur-xl border border-white/40 dark:border-white/5 shadow-glass-card;
 }
 
-/* Glassmorphism Cards & Panels */
-.glass-card {
-  background: rgba(255, 253, 251, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(237, 119, 81, 0.15);
-}
-
-.dark .glass-card {
-  background: rgba(32, 29, 26, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(237, 119, 81, 0.2);
+.glass-panel-strong {
+  @apply bg-white/90 dark:bg-darkCard/90 backdrop-blur-2xl border border-white/50 dark:border-white/10 shadow-xl;
 }
 
 .glass-nav {
-  background: rgba(255, 253, 251, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  @apply bg-white/80 dark:bg-darkBg/80 backdrop-blur-xl border-none;
 }
 
-.dark .glass-nav {
-  background: rgba(24, 22, 20, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+.glass-input {
+  @apply bg-white/60 dark:bg-darkCardElevated/60 backdrop-blur-md border border-slate-200 dark:border-white/10 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 outline-none transition-all;
 }
 
-/* Animated Gradient Text */
-.gradient-text {
-  background: linear-gradient(135deg, #ED7751 0%, #D9603B 40%, #2B2926 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* Neomorphism Styles (Soft Shadows) */
+.neo-out {
+  box-shadow: 6px 6px 14px #e2e8f0, -6px -6px 14px #ffffff;
 }
 
-.dark .gradient-text {
-  background: linear-gradient(135deg, #FFFDFB 0%, #ED7751 60%, #FBEAE3 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.neo-in {
+  box-shadow: inset 4px 4px 8px #cbd5e1, inset -4px -4px 8px #ffffff;
 }
 
-.gradient-text-coral {
-  background: linear-gradient(135deg, #ED7751 0%, #D9603B 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.neo-dark-out {
+  box-shadow: 8px 8px 18px #040609, -8px -8px 18px #121824;
 }
 
-/* Mesh Background Grid */
-.bg-grid-pattern {
-  background-image: radial-gradient(rgba(237, 119, 81, 0.15) 1px, transparent 1px);
-  background-size: 28px 28px;
+.neo-dark-in {
+  box-shadow: inset 5px 5px 10px #040609, inset -5px -5px 10px #121824;
 }
 
-/* Ambient Blur Orbs */
-.glow-orb-coral {
-  background: radial-gradient(circle, rgba(237, 119, 81, 0.28) 0%, rgba(237, 119, 81, 0) 70%);
+/* Smart Responsive Shadows that switch with .dark */
+.neo-box-out {
+  @apply shadow-neo-out dark:shadow-neo-dark-out;
 }
 
-.glow-orb-light {
-  background: radial-gradient(circle, rgba(251, 234, 227, 0.6) 0%, rgba(251, 234, 227, 0) 70%);
+.neo-box-in {
+  @apply shadow-neo-in dark:shadow-neo-dark-in;
 }
 
-/* Utility Animations */
-.perspective-1000 {
-  perspective: 1000px;
+.neo-box-card {
+  @apply shadow-neo-card dark:shadow-neo-dark-card;
 }
 
+/* Interactive custom styles */
+.neo-btn {
+  @apply transition-all duration-300 active:scale-95 cursor-pointer;
+  @apply shadow-neo-out dark:shadow-neo-dark-out hover:shadow-neo-in dark:hover:shadow-neo-dark-in;
+}
+
+.neo-btn-inset {
+  @apply transition-all duration-300 active:scale-95 cursor-pointer;
+  @apply shadow-neo-in dark:shadow-neo-dark-in hover:shadow-neo-out dark:hover:shadow-neo-dark-out;
+}
+
+/* Custom Gradients and Glows */
+.text-glow-emerald {
+  text-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+}
+
+.text-glow-indigo {
+  text-shadow: 0 0 12px rgba(99, 102, 241, 0.4);
+}
+
+.text-glow-violet {
+  text-shadow: 0 0 12px rgba(139, 92, 246, 0.4);
+}
+
+/* Background Glowing Orbs */
+.glow-orb-emerald {
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.18) 0%, rgba(16, 185, 129, 0) 70%);
+}
+
+.glow-orb-indigo {
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.18) 0%, rgba(99, 102, 241, 0) 70%);
+}
+
+.glow-orb-violet {
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.18) 0%, rgba(139, 92, 246, 0) 70%);
+}
+
+.glow-orb-cyan {
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.18) 0%, rgba(6, 182, 212, 0) 70%);
+}
+
+/* Animation utilities */
+.hover-lift {
+  @apply transition-transform duration-300 hover:-translate-y-1.5;
+}
 

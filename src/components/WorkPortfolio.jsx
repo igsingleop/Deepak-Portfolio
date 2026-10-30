@@ -1,288 +1,445 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Eye, X, Tag } from 'lucide-react';
-import TiltCard from './3DTiltCard';
+import {
+  ExternalLink,
+  Briefcase,
+  Calendar,
+  CheckCircle2,
+  X,
+  Sparkles,
+  Clock,
+  ArrowUpRight,
+  Folder,
+  User,
+  TrendingUp,
+  ChevronRight
+} from 'lucide-react';
+import Magnetic from './Magnetic';
+
+const clientProjects = [
+  {
+    id: 1,
+    title: 'Univally',
+    client: 'Univally EdTech Startup',
+    category: 'UI/UX Design',
+    duration: 'Feb 2025 - Jun 2025',
+    summary: 'Redesigned the entire student onboarding and course tracking dashboard to enhance course discovery and dashboard interaction.',
+    description: 'Developed high-fidelity prototypes and modern interfaces for a fast-growing educational platform. The main challenge was to display heavy curriculum metadata without cluttering the screen. We implemented a clean, responsive bento-grid dashboard layout with custom widgets.',
+    bullets: [
+      'Mapped client concepts into functional user wireframes and design structures.',
+      'Designed interactive prototyping pathways to simulate student dashboards in Figma.',
+      'Conducted user testing evaluations to refine visual layouts and core dashboard elements.',
+      'Designed a structured 3-step student onboarding wizard that increased completions.'
+    ],
+    impact: '35% reduction in onboarding drop-offs & 4.8/5 student review score.',
+    stats: { primary: '35% Drop-off Reduction', secondary: '4.8/5 Rating' },
+    tags: ['Figma Prototyping', 'UI/UX Design', 'Bento Layout', 'User Testing', 'Wireframing'],
+    color: 'from-emerald-500 to-teal-500',
+    icon: Folder,
+  },
+  {
+    id: 2,
+    title: 'The Single Store',
+    client: 'E-Commerce Platform',
+    category: 'UI/UX Design',
+    duration: 'Jul 2025 - Jan 2026',
+    liveUrl: 'https://thesinglestore.xyz/',
+    summary: 'Developed an interactive anomalies dashboard visualizing transactional data, flagging duplicate charges, and tracking SLAs.',
+    description: 'Designed and built a real-time analytics interface to visualize banking operations transaction streams. Working in an SLA-driven BPS operation at Hexaware, I bridged operational workflow requirements with an interactive visualization platform to replace manual audits.',
+    bullets: [
+      'Utilized analytical tools to clean, analyze, and process transaction data.',
+      'Built custom widgets showing real-time transaction speeds and bottleneck points.',
+      'Implemented customizable filters for viewing transactional irregularities and duplicate entries.',
+      'Automated standard reporting steps saving substantial monthly operational audit times.'
+    ],
+    impact: 'Automated 20+ hours of monthly manual data audits and ensured 99.8% SLA adherence.',
+    stats: { primary: '20+ Hrs Audits Saved/mo', secondary: '99.8% SLA Adherence' },
+    tags: ['Data Operations', 'SLA Management', 'React.js', 'Chart.js', 'Excel Analytics'],
+    color: 'from-blue-500 to-indigo-500',
+    icon: TrendingUp,
+  },
+  {
+    id: 3,
+    title: 'Apex Logistics Router',
+    client: 'Apex Logistics Corp',
+    category: 'Web Apps',
+    duration: '3 Months Contract',
+    summary: 'A responsive full-stack dispatch portal optimizing routes, driver tracking, and instant delivery notifications.',
+    description: 'A full-stack dispatching portal built for local delivery managers. Integrated navigation map services and dynamic driver state timelines to reduce routes latency. Features live dispatch adjustments, status feeds, and full dark/light mode compatibility.',
+    bullets: [
+      'Implemented real-time geolocation status reporting for delivery vans.',
+      'Designed a responsive mobile dashboard for drivers to update delivery reports on-the-go.',
+      'Developed clean administrative dashboard panels for route mapping and scheduling.',
+      'Created custom notification templates sent on immediate delivery status updates.'
+    ],
+    impact: '15% reduction in overall route delivery delays and improved dispatcher workflow.',
+    stats: { primary: '15% Delay Reduction', secondary: '120+ Daily Drivers' },
+    tags: ['React.js', 'Tailwind CSS', 'Node.js', 'API Integration', 'Map Services'],
+    color: 'from-purple-500 to-indigo-500',
+    icon: Briefcase,
+  },
+  {
+    id: 4,
+    title: 'EcoSphere E-Commerce',
+    client: 'EcoSphere Sustainable Goods',
+    category: 'Web Apps',
+    duration: '4 Months Contract',
+    summary: 'A mobile-first sustainable products e-commerce store focusing on micro-interactions and carbon footprint calculators.',
+    description: 'Designed and built a fluid web shop focusing on interactive storytelling. The client wanted the website to show their commitment to sustainability. I integrated a dynamic React widget that estimates carbon emission offsets during the cart checkout checkout phase.',
+    bullets: [
+      'Designed dynamic shopping cart sliding drawers with micro-animations.',
+      'Built a custom Carbon Footprint calculator widget that displays eco-savings in real time.',
+      'Optimized loading times for image assets, enhancing core web vital indicators.',
+      'Integrated payment gateways with clear styling for success and invoice screens.'
+    ],
+    impact: '22% increase in visitor checkout conversion rate and 150ms faster average load times.',
+    stats: { primary: '22% Conversion Boost', secondary: '150ms Faster Loads' },
+    tags: ['React.js', 'Framer Motion', 'Tailwind CSS', 'Shopify API', 'Performance Opt'],
+    color: 'from-teal-500 to-emerald-600',
+    icon: Sparkles,
+  }
+];
 
 export default function WorkPortfolio() {
-  const [activeCategory, setActiveCategory] = useState('All');
   const [selectedProject, setSelectedProject] = useState(null);
 
-  const categories = ['All', 'Web Dev', 'UI/UX', 'Marketing', 'Content'];
+  // Animations variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15
+      }
+    }
+  };
 
-  const projects = [
-    {
-      id: 1,
-      title: 'Aura SaaS Dashboard & Analytics',
-      category: 'Web Dev',
-      tag: 'Full Stack App',
-      description: 'A futuristic analytics platform for AI SaaS startups with real-time charts and dark glassmorphic UI.',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
-      tags: ['React', 'Tailwind CSS', 'Framer Motion', 'Chart.js'],
-      metrics: '340% increase in user retention',
-      link: '#',
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: 'spring',
+        stiffness: 100,
+        damping: 15
+      }
     },
-    {
-      id: 2,
-      title: 'Kinetix Mobile Fitness App UI',
-      category: 'UI/UX',
-      tag: 'Figma System',
-      description: 'Complete mobile design system & interactive Figma prototype for an AI-powered fitness workout planner.',
-      image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=800&q=80',
-      tags: ['Figma', 'UI/UX Design', 'Design System', 'Prototyping'],
-      metrics: 'Over 120+ components built',
-      link: '#',
-    },
-    {
-      id: 3,
-      title: 'HyperGrowth Meta Ads & Funnel',
-      category: 'Marketing',
-      tag: 'Growth Campaign',
-      description: 'Targeted ad campaign strategy & high-converting landing page for a B2B SaaS startup launch.',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
-      tags: ['Meta Ads', 'SEO', 'Conversion Funnel', 'Copywriting'],
-      metrics: '4.8x ROI within 30 days',
-      link: '#',
-    },
-    {
-      id: 4,
-      title: 'NeoCraft E-Commerce Platform',
-      category: 'Web Dev',
-      tag: 'Next.js App',
-      description: 'Headless e-commerce store with instant product search, micro-animations, and Stripe payment integration.',
-      image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=800&q=80',
-      tags: ['Next.js', 'Tailwind', 'Stripe', 'Framer Motion'],
-      metrics: 'Sub-second page load times',
-      link: '#',
-    },
-    {
-      id: 5,
-      title: 'Pulse Brand Identity & Social Reels',
-      category: 'Content',
-      tag: 'Brand Media',
-      description: 'End-to-end content production including motion graphics, social carousels, and high-converting video scripts.',
-      image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
-      tags: ['Content Strategy', 'Social Assets', 'Video Editing', 'Branding'],
-      metrics: '1.2M+ total impressions',
-      link: '#',
-    },
-    {
-      id: 6,
-      title: 'FinTech Capital Portal',
-      category: 'UI/UX',
-      tag: 'Web Dashboard',
-      description: 'Minimalist web dashboard designed for institutional investment management and asset tracking.',
-      image: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=80',
-      tags: ['UI/UX', 'Figma', 'Fintech', 'Design System'],
-      metrics: 'Adopted by 15+ fund managers',
-      link: '#',
-    },
-  ];
+    exit: { opacity: 0, y: -20, transition: { duration: 0.2 } }
+  };
 
-  const filteredProjects = activeCategory === 'All'
-    ? projects
-    : projects.filter(p => p.category === activeCategory);
+  const modalVariants = {
+    hidden: { opacity: 0, scale: 0.9, y: 20 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        type: 'spring',
+        stiffness: 120,
+        damping: 20
+      }
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.95,
+      y: 10,
+      transition: { duration: 0.25 }
+    }
+  };
+
+  const overlayVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+    exit: { opacity: 0, transition: { delay: 0.1 } }
+  };
 
   return (
-    <section id="work" className="py-24 relative overflow-hidden bg-[#FFFDFB] dark:bg-[#181614]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <motion.span
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-xs sm:text-sm font-space font-semibold tracking-widest text-[#ED7751] uppercase"
-          >
-            SELECTED CLIENT WORK
-          </motion.span>
+    <section id="portfolio" className="py-24 relative overflow-hidden bg-slate-100/40 dark:bg-darkCard/20">
+      {/* Background glowing orb */}
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full glow-orb-violet -z-10 animate-pulse-glow opacity-50"></div>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+      <div className="max-w-7xl mx-auto px-6">
+
+        {/* Section Heading */}
+        <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="mt-3 text-3xl sm:text-5xl font-extrabold font-space text-[#2B2926] dark:text-[#FFFDFB]"
+            transition={{ duration: 0.5 }}
           >
-            Crafted for <span className="gradient-text-coral">Growth & Scale</span>
+            <span className="font-outfit text-xs font-bold uppercase tracking-widest text-indigo-500 dark:text-indigo-400 bg-indigo-500/10 px-4 py-1.5 rounded-full border border-indigo-500/20">
+              Client Showcase &amp; Case Studies
+            </span>
+          </motion.div>
+          
+          <motion.h2
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="font-sora font-extrabold text-3xl md:text-4xl text-slate-900 dark:text-white mt-4 mb-4"
+          >
+            Work <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-400 bg-clip-text text-transparent">Portfolio</span>
           </motion.h2>
 
-          <p className="mt-4 text-base text-[#6B6862] dark:text-[#FFFDFB]/75">
-            Explore our recent client deliverables across engineering, design, marketing, and content strategy.
-          </p>
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: 80 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="h-1 bg-gradient-to-r from-indigo-500 to-emerald-400 mx-auto rounded-full"
+          />
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="font-inter text-slate-600 dark:text-slate-400 text-sm md:text-base max-w-2xl mx-auto mt-4 leading-relaxed"
+          >
+            A compilation of professional client engagements, detailing real impact, user experience redesigns, and data-driven applications.
+          </motion.p>
         </div>
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-12">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`px-5 py-2 rounded-full font-space text-xs sm:text-sm font-medium transition-all duration-300 ${
-                activeCategory === category
-                  ? 'bg-[#ED7751] text-[#FFFDFB] shadow-coral-sm'
-                  : 'glass-card text-[#6B6862] dark:text-[#FFFDFB]/70 hover:text-[#ED7751] border border-[#ED7751]/15'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Project Grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-50px' }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+        >
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project) => (
-              <motion.div
-                key={project.id}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4 }}
-              >
-                <TiltCard className="h-full">
-                  <div
-                    onClick={() => setSelectedProject(project)}
-                    className="group relative h-full rounded-3xl overflow-hidden glass-card border border-[#ED7751]/15 hover:border-[#ED7751]/40 transition-all duration-500 cursor-pointer flex flex-col justify-between"
-                  >
-                    {/* Image & Overlay */}
-                    <div className="relative h-56 w-full overflow-hidden">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        loading="lazy"
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#2B2926] via-[#2B2926]/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
-
-                      {/* Top Badges */}
-                      <div className="absolute top-4 left-4 right-4 flex justify-between items-center z-10">
-                        <span className="px-3 py-1 rounded-full bg-[#FFFDFB]/90 dark:bg-[#181614]/90 backdrop-blur-md text-[#ED7751] text-xs font-space font-semibold shadow-sm">
-                          {project.category}
+            {clientProjects.map((project) => {
+              const ProjectIcon = project.icon;
+              return (
+                <motion.div
+                  key={project.id}
+                  layout
+                  variants={cardVariants}
+                  initial="hidden"
+                  animate="show"
+                  exit="exit"
+                  whileHover={{ y: -6, transition: { duration: 0.2 } }}
+                  onClick={() => setSelectedProject(project)}
+                  className="p-6 sm:p-8 rounded-3xl glass-panel border border-white/20 dark:border-white/5 hover:border-emerald-500/30 dark:hover:border-emerald-500/20 hover:shadow-glass-emerald transition-all duration-300 cursor-pointer group text-left flex flex-col justify-between"
+                >
+                  <div>
+                    {/* Header */}
+                    <div className="flex justify-between items-start mb-6">
+                      <div className="flex items-center gap-3">
+                        <span className={`p-2.5 rounded-2xl bg-gradient-to-br ${project.color} text-white shadow-sm`}>
+                          <ProjectIcon size={18} />
                         </span>
-                        <span className="px-3 py-1 rounded-full bg-[#ED7751] text-[#FFFDFB] text-xs font-space font-medium shadow-sm">
-                          {project.tag}
-                        </span>
+                        <div>
+                          <span className="font-outfit text-[11px] font-bold uppercase tracking-wider text-emerald-500 dark:text-emerald-400">
+                            {project.category}
+                          </span>
+                          <h3 className="font-sora font-extrabold text-xl text-slate-800 dark:text-white mt-0.5 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors">
+                            {project.title}
+                          </h3>
+                        </div>
                       </div>
-
-                      {/* Hover Overlay Button */}
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#ED7751]/20 backdrop-blur-sm">
-                        <span className="px-6 py-2.5 rounded-full bg-[#FFFDFB] text-[#2B2926] font-space font-bold text-xs tracking-wider flex items-center gap-2 shadow-lg group-hover:scale-105 transition-transform">
-                          <Eye className="w-4 h-4 text-[#ED7751]" />
-                          <span>View Project</span>
+                      <div className="flex items-center gap-2">
+                        {project.liveUrl && (
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-outfit text-xs font-bold border border-emerald-500/20 hover:bg-emerald-500 hover:text-white transition-all flex items-center gap-1"
+                            title="Visit Live Site"
+                          >
+                            <span>Live Site</span>
+                            <ExternalLink size={12} />
+                          </a>
+                        )}
+                        <span className="p-1.5 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 text-slate-400 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors">
+                          <ArrowUpRight size={14} />
                         </span>
                       </div>
                     </div>
 
-                    {/* Card Body */}
-                    <div className="p-6 flex flex-col justify-between flex-grow">
-                      <div>
-                        <h3 className="text-xl font-bold font-space text-[#2B2926] dark:text-[#FFFDFB] group-hover:text-[#ED7751] transition-colors">
-                          {project.title}
-                        </h3>
-                        <p className="mt-2 text-xs sm:text-sm text-[#6B6862] dark:text-[#FFFDFB]/70 line-clamp-2">
-                          {project.description}
-                        </p>
-                      </div>
+                    <p className="font-inter text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-6">
+                      {project.summary}
+                    </p>
 
-                      {/* Tech Tags */}
-                      <div className="mt-6 flex flex-wrap gap-1.5 pt-4 border-t border-[#ED7751]/10">
-                        {project.tags.map((t, idx) => (
+                    {/* Stats Highlights */}
+                    <div className="p-4 rounded-2xl bg-slate-100/50 dark:bg-slate-900/40 border border-slate-200/20 dark:border-white/5 mb-6 flex justify-between items-center">
+                      <div className="flex items-center gap-2 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                        <TrendingUp size={14} />
+                        <span>{project.stats.primary}</span>
+                      </div>
+                      <div className="text-[10px] font-outfit text-slate-400 font-medium">
+                        {project.duration}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-1.5 mt-auto">
+                    {project.tags.slice(0, 3).map((tag) => (
+                      <span
+                        key={tag}
+                        className="font-outfit text-[10px] font-semibold px-2.5 py-1 rounded-md bg-slate-200/50 dark:bg-slate-900/60 text-slate-600 dark:text-slate-400 border border-slate-300/10"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                    {project.tags.length > 3 && (
+                      <span className="font-outfit text-[10px] font-semibold px-2 py-1 text-slate-400">
+                        +{project.tags.length - 3} more
+                      </span>
+                    )}
+                  </div>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
+        </motion.div>
+      </div>
+
+      {/* Expandable Project Details Modal Overlay */}
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            variants={overlayVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-slate-950/60 dark:bg-black/80 backdrop-blur-md"
+            onClick={() => setSelectedProject(null)}
+          >
+            {/* Modal Box */}
+            <motion.div
+              variants={modalVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="w-full max-w-3xl max-h-[85vh] overflow-y-auto rounded-3xl bg-white dark:bg-darkCard border border-slate-200 dark:border-white/10 shadow-2xl relative scrollbar-thin scrollbar-thumb-slate-300 dark:scrollbar-thumb-slate-800"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Top Banner Cover */}
+              <div className={`h-4 bg-gradient-to-r ${selectedProject.color}`} />
+
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-8 right-6 p-2 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-900 dark:hover:bg-slate-800 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white transition-all shadow-sm border border-slate-200/20"
+                aria-label="Close details"
+              >
+                <X size={18} />
+              </button>
+
+              <div className="p-6 sm:p-10 text-left">
+
+                {/* Meta details */}
+                <div className="flex flex-wrap items-center gap-2.5 mb-4">
+                  <span className="font-outfit text-xs font-bold uppercase tracking-wider text-emerald-500 dark:text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-lg">
+                    {selectedProject.category}
+                  </span>
+                  <div className="flex items-center gap-1.5 text-xs text-slate-400 font-outfit">
+                    <Clock size={12} />
+                    <span>{selectedProject.duration}</span>
+                  </div>
+                </div>
+
+                {/* Title */}
+                <h3 className="font-sora font-extrabold text-2xl sm:text-3xl text-slate-800 dark:text-white mb-2">
+                  {selectedProject.title}
+                </h3>
+                <div className="font-outfit text-base text-slate-500 dark:text-slate-400 flex items-center gap-2 mb-8">
+                  <User size={16} className="text-emerald-500" />
+                  <span>Client: <strong>{selectedProject.client}</strong></span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start mb-8">
+                  {/* Detailed Description */}
+                  <div className="md:col-span-8 space-y-6">
+                    <div>
+                      <h4 className="font-sora font-bold text-sm text-slate-400 uppercase tracking-wider mb-2">Project Overview</h4>
+                      <p className="font-inter text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
+                        {selectedProject.description}
+                      </p>
+                    </div>
+
+                    <div>
+                      <h4 className="font-sora font-bold text-sm text-slate-400 uppercase tracking-wider mb-3">Key Contributions & Scope</h4>
+                      <ul className="space-y-3.5">
+                        {selectedProject.bullets.map((bullet, idx) => (
+                          <li key={idx} className="flex items-start gap-3">
+                            <span className="mt-1 text-emerald-500 shrink-0">
+                              <CheckCircle2 size={16} />
+                            </span>
+                            <span className="font-inter text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                              {bullet}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* Impact & Meta Sidebar */}
+                  <div className="md:col-span-4 space-y-6">
+                    <div className="p-5 rounded-2xl bg-emerald-500/5 dark:bg-emerald-500/10 border border-emerald-500/20 text-slate-800 dark:text-white">
+                      <h4 className="font-sora font-bold text-sm text-emerald-600 dark:text-emerald-400 flex items-center gap-2 mb-3">
+                        <TrendingUp size={16} />
+                        Measurable Impact
+                      </h4>
+                      <p className="font-inter text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-semibold">
+                        {selectedProject.impact}
+                      </p>
+                    </div>
+
+                    <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800/80">
+                      <h4 className="font-sora font-bold text-xs text-slate-400 uppercase tracking-wider mb-4">Technologies Used</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {selectedProject.tags.map((tag) => (
                           <span
-                            key={idx}
-                            className="px-2.5 py-1 rounded-md bg-[#FBEAE3] dark:bg-[#2A2623] text-[#6B6862] dark:text-[#FFFDFB]/75 text-[11px] font-medium"
+                            key={tag}
+                            className="font-outfit text-xs font-semibold px-2.5 py-1 rounded-lg bg-white dark:bg-slate-950 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800"
                           >
-                            {t}
+                            {tag}
                           </span>
                         ))}
                       </div>
                     </div>
                   </div>
-                </TiltCard>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </div>
-      </div>
+                </div>
 
-      {/* Modal Detail View */}
-      <AnimatePresence>
-        {selectedProject && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSelectedProject(null)}
-              className="absolute inset-0 bg-[#2B2926]/70 backdrop-blur-md"
-            />
+                <div className="h-px bg-slate-200 dark:bg-slate-800/80 mb-6"></div>
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative z-10 w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 sm:p-8 rounded-3xl glass-card bg-[#FFFDFB] dark:bg-[#201D1A] border border-[#ED7751]/30 shadow-2xl"
-            >
-              <button
-                onClick={() => setSelectedProject(null)}
-                className="absolute top-5 right-5 p-2 rounded-full text-[#6B6862] hover:text-[#ED7751] transition-colors"
-              >
-                <X className="w-6 h-6" />
-              </button>
+                {/* Footer action buttons */}
+                <div className="flex flex-wrap items-center justify-between gap-4">
+                  {selectedProject.liveUrl ? (
+                    <Magnetic>
+                      <a
+                        href={selectedProject.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 via-purple-600 to-emerald-500 text-white font-outfit text-sm font-bold shadow-md hover:scale-105 transition-all flex items-center gap-2 block"
+                      >
+                        <span>Visit Live Site</span>
+                        <ExternalLink size={16} />
+                      </a>
+                    </Magnetic>
+                  ) : <div />}
 
-              <div className="rounded-2xl overflow-hidden mb-6 h-64 sm:h-80 relative">
-                <img
-                  src={selectedProject.image}
-                  alt={selectedProject.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              <div className="flex items-center gap-2 mb-2">
-                <span className="px-3 py-1 rounded-full bg-[#FBEAE3] text-[#ED7751] font-space text-xs font-bold">
-                  {selectedProject.category}
-                </span>
-                <span className="text-xs text-[#6B6862] font-mono">
-                  {selectedProject.metrics}
-                </span>
-              </div>
-
-              <h3 className="text-2xl font-bold font-space text-[#2B2926] dark:text-[#FFFDFB]">
-                {selectedProject.title}
-              </h3>
-
-              <p className="mt-4 text-sm text-[#6B6862] dark:text-[#FFFDFB]/80 leading-relaxed">
-                {selectedProject.description}
-              </p>
-
-              <div className="mt-6">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-[#ED7751] mb-2">
-                  Technologies & Frameworks
-                </h4>
-                <div className="flex flex-wrap gap-2">
-                  {selectedProject.tags.map((t, idx) => (
-                    <span
-                      key={idx}
-                      className="px-3 py-1 rounded-lg bg-[#FBEAE3] dark:bg-[#2A2623] text-[#2B2926] dark:text-[#FFFDFB] text-xs font-medium"
+                  <Magnetic>
+                    <button
+                      onClick={() => setSelectedProject(null)}
+                      className="px-6 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-900 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-outfit text-sm font-semibold transition-all"
                     >
-                      {t}
-                    </span>
-                  ))}
+                      Close details
+                    </button>
+                  </Magnetic>
                 </div>
               </div>
-
-              <div className="mt-8 flex gap-4">
-                <a
-                  href="#contact"
-                  onClick={() => setSelectedProject(null)}
-                  className="flex-1 py-3 rounded-xl bg-[#ED7751] text-[#FFFDFB] font-space font-semibold text-center shadow-coral-sm hover:bg-[#D9603B] transition-colors flex items-center justify-center gap-2"
-                >
-                  <span>Build Similar Project</span>
-                  <ExternalLink className="w-4 h-4" />
-                </a>
-              </div>
             </motion.div>
-          </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </section>

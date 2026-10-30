@@ -7,7 +7,7 @@ export default function Experience() {
     {
       role: 'Front-End Developer',
       company: 'Carrezza Global Solutions Pvt Ltd',
-      duration: 'February 2026 - August 2026',
+      duration: 'February 2025 - Present',
       type: 'Full-time',
       location: 'Global Web Solutions',
       bullets: [
