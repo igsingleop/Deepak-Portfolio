@@ -16,7 +16,7 @@ export default function Experience() {
         'Collaborating with cross-functional teams to optimize digital supply chain and operational processes.',
         'Monitoring key performance metrics, driving process improvements, and maintaining quality standards.'
       ],
-      tags: ['Digital Process', 'Operations', 'SLA Management', 'Process Optimization', 'Quality Assurance', 'Amazon'],
+      tags: ['Digital Process', 'Operations', 'SLA Management', 'Data Analysis', 'Quality Assurance', 'Amazon'],
     },
     {
       role: 'Front-End Developer',
