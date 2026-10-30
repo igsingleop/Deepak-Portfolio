@@ -5,25 +5,11 @@ import { Briefcase, Calendar, CheckCircle2, Building2, MapPin } from 'lucide-rea
 export default function Experience() {
   const experiences = [
     {
-      role: 'Associate - Digital Process',
-      company: 'Amazon',
-      duration: 'September 2026 - Present',
-      type: 'Full-time',
-      location: 'Chennai, Tamil Nadu ',
-      bullets: [
-        'Managing digital process workflows and operations within Amazon\'s high-scale digital ecosystem.',
-        'Ensuring accuracy and efficiency in digital content operations and process execution under SLA guidelines.',
-        'Collaborating with cross-functional teams to optimize digital supply chain and operational processes.',
-        'Monitoring key performance metrics, driving process improvements, and maintaining quality standards.'
-      ],
-      tags: ['Digital Process', 'Operations', 'SLA Management', 'Process Optimization', 'Quality Assurance', 'Amazon'],
-    },
-    {
       role: 'Front-End Developer',
       company: 'Carrezza Global Solutions Pvt Ltd',
       duration: 'February 2026 - August 2026',
       type: 'Full-time',
-      location: 'Perundurai, Erode, Tamil Nadu',
+      location: 'Global Web Solutions',
       bullets: [
         'Developing modern, responsive web application interfaces using React.js, JavaScript (ES6+), and Tailwind CSS.',
         'Transforming design concepts and wireframes into high-performance, user-centered front-end experiences.',
@@ -37,7 +23,7 @@ export default function Experience() {
       company: 'Hexaware Technologies',
       duration: 'July 2025 - January 2026',
       type: 'Full-time',
-      location: 'Coimbatore, Tamil Nadu',
+      location: 'Hexaware BPS Operations',
       bullets: [
         'Managed content operations, digital supply chain workflows, and media publishing under strict SLA guidelines.',
         'Executed quality control (QC) & asset verification for high-volume client data and transaction reporting.',
@@ -51,7 +37,7 @@ export default function Experience() {
       company: 'Univally',
       duration: 'February 2025 - June 2025',
       type: 'Freelance',
-      location: 'Remote',
+      location: 'EdTech Startup',
       bullets: [
         'Designed high-fidelity web and mobile user interfaces using Figma, Sketch App, and modern web frameworks.',
         'Created interactive prototyping pathways, wireframes, and responsive dashboard design layouts.',
