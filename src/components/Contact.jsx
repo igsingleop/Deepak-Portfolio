@@ -1,347 +1,320 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
-import Magnetic from './Magnetic';
-
-const Linkedin = ({ size = 24, className }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-    width={size}
-    height={size}
-  >
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-    <rect x="2" y="9" width="4" height="12" />
-    <circle cx="4" cy="4" r="2" />
-  </svg>
-);
-
-const Instagram = ({ size = 24, className }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-    width={size}
-    height={size}
-  >
-    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-  </svg>
-);
-
-const Fiverr = ({ size = 24, className }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    className={className}
-    width={size}
-    height={size}
-  >
-    <path d="M23.004 15.588a.995.995 0 1 0 .002-1.99.995.995 0 0 0-.002 1.99zm-.996-3.705h-.85c-.546 0-.84.41-.84 1.092v2.466h-1.61v-3.558h-.684c-.547 0-.84.41-.84 1.092v2.466h-1.61v-4.874h1.61v.74c.264-.574.626-.74 1.163-.74h1.972v.74c.264-.574.625-.74 1.162-.74h.527v1.316zm-6.786 1.501h-3.359c.088.546.43.858 1.006.858.43 0 .732-.175.83-.487l1.425.4c-.351.848-1.22 1.364-2.255 1.364-1.748 0-2.549-1.355-2.549-2.515 0-1.14.703-2.505 2.45-2.505 1.856 0 2.471 1.384 2.471 2.408 0 .224-.01.37-.02.477zm-1.562-.945c-.04-.42-.342-.81-.889-.81-.508 0-.81.225-.908.81h1.797zM7.508 15.44h1.416l1.767-4.874h-1.62l-.86 2.837-.878-2.837H5.72l1.787 4.874zm-6.6 0H2.51v-3.558h1.524v3.558h1.591v-4.874H2.51v-.302c0-.332.235-.536.606-.536h.918V8.412H2.85c-1.162 0-1.943.712-1.943 1.755v.4H0v1.316h.908v3.558z" />
-  </svg>
-);
-
-const Behance = ({ size = 24, className }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    className={className}
-    width={size}
-    height={size}
-  >
-    <path d="M16.969 16.927a2.561 2.561 0 0 0 1.901.677 2.501 2.501 0 0 0 1.531-.475c.362-.235.636-.584.779-.99h2.585a5.091 5.091 0 0 1-1.9 2.896 5.292 5.292 0 0 1-3.091.88 5.839 5.839 0 0 1-2.284-.433 4.871 4.871 0 0 1-1.723-1.211 5.657 5.657 0 0 1-1.08-1.874 7.057 7.057 0 0 1-.383-2.393c-.005-.8.129-1.595.396-2.349a5.313 5.313 0 0 1 5.088-3.604 4.87 4.87 0 0 1 2.376.563c.661.362 1.231.87 1.668 1.485a6.2 6.2 0 0 1 .943 2.133c.194.821.263 1.666.205 2.508h-7.699c-.063.79.184 1.574.688 2.187ZM6.947 4.084a8.065 8.065 0 0 1 1.928.198 4.29 4.29 0 0 1 1.49.638c.418.303.748.711.958 1.182.241.579.357 1.203.341 1.83a3.506 3.506 0 0 1-.506 1.961 3.726 3.726 0 0 1-1.503 1.287 3.588 3.588 0 0 1 2.027 1.437c.464.747.697 1.615.67 2.494a4.593 4.593 0 0 1-.423 2.032 3.945 3.945 0 0 1-1.163 1.413 5.114 5.114 0 0 1-1.683.807 7.135 7.135 0 0 1-1.928.259H0v4.084h6.947Zm-.235 12.9c.308.004.616-.029.916-.099a2.18 2.18 0 0 0 .766-.332c.228-.158.411-.371.534-.619.142-.317.208-.663.191-1.009a2.08 2.08 0 0 0-.642-1.715 2.618 2.618 0 0 0-1.696-.505h-3.54v4.279h3.471Zm13.635-5.967a2.13 2.13 0 0 0-1.654-.619 2.336 2.336 0 0 0-1.163.259 2.474 2.474 0 0 0-.738.62 2.359 2.359 0 0 0-.396.792c-.074.239-.12.485-.137.734h4.769a3.239 3.239 0 0 0-.679-1.785l-.002-.001Zm-13.813-.648a2.254 2.254 0 0 0 1.423-.433c.399-.355.607-.88.56-1.413a1.916 1.916 0 0 0-.178-.891 1.298 1.298 0 0 0-.495-.533 1.851 1.851 0 0 0-.711-.274 3.966 3.966 0 0 0-.835-.073H3.241v3.631h3.293v-.014ZM21.62 5.122h-5.976v1.527h5.976V5.122Z" />
-  </svg>
-);
-
-const WhatsApp = ({ size = 22, className }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    className={className}
-    width={size}
-    height={size}
-  >
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.447-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414zM12.012 2.071c-5.508 0-9.98 4.473-9.98 9.98 0 1.761.459 3.479 1.331 4.992L2 22l5.083-1.332c1.464.798 3.123 1.218 4.929 1.218 5.507 0 9.98-4.473 9.98-9.98 0-5.507-4.473-9.98-9.98-9.98zm0 18.256c-1.579 0-3.125-.424-4.475-1.226l-.321-.19-3.32.87.886-3.237-.209-.333A8.256 8.256 0 0 1 3.757 12.05c0-4.552 3.703-8.256 8.255-8.256 4.551 0 8.255 3.704 8.255 8.256 0 4.552-3.704 8.256-8.255 8.256z" />
-  </svg>
-);
+import { motion } from 'framer-motion';
+import { Phone, Mail, MessageSquare, Send, CheckCircle2, Clock, MapPin, Globe } from 'lucide-react';
 
 export default function Contact() {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    service: 'Web Development',
+    budget: '₹10,000 - ₹25,000',
+    message: '',
+  });
+
+  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) return;
-
-    setIsSubmitting(true);
-
-    // Simulate database query/message sending
+    setSubmitted(true);
     setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSuccess(true);
-      setFormData({ name: '', email: '', message: '' });
-
-      // Reset success state after a few seconds
-      setTimeout(() => setIsSuccess(false), 5000);
-    }, 1500);
+      setSubmitted(false);
+      setFormData({
+        name: '',
+        email: '',
+        service: 'Web Development',
+        budget: '₹10,000 - ₹25,000',
+        message: '',
+      });
+    }, 4000);
   };
 
-  const contactDetails = [
+  const socials = [
     {
-      icon: <WhatsApp size={22} className="text-emerald-500" />,
-      label: 'WhatsApp',
-      value: '+91 9363112798',
-      href: 'https://wa.me/919363112798',
-      target: '_blank',
+      name: 'LinkedIn',
+      href: 'https://linkedin.com',
+      svg: (
+        <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+          <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+        </svg>
+      )
     },
     {
-      icon: <Mail size={22} />,
-      label: 'Email Address',
-      value: 'deepaksamu77@gmail.com',
-      href: 'mailto:deepaksamu77@gmail.com',
+      name: 'GitHub',
+      href: 'https://github.com',
+      svg: (
+        <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+          <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
+        </svg>
+      )
     },
     {
-      icon: <Phone size={22} />,
-      label: 'Phone Number',
-      value: '+91 9363112798',
-      href: 'tel:+919363112798',
+      name: 'Instagram',
+      href: 'https://instagram.com',
+      svg: (
+        <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+        </svg>
+      )
     },
     {
-      icon: <MapPin size={22} />,
-      label: 'Location',
-      value: 'Erode, Tamil Nadu, India',
-      subValue: '20/21A North Car Street, Ariyankadu, Kanjikovil, 638116',
-      href: 'https://maps.google.com/?q=Kanjikovil,+Perundurai,+Erode',
-      target: '_blank',
+      name: 'Twitter/X',
+      href: 'https://twitter.com',
+      svg: (
+        <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+      )
     },
     {
-      icon: <Linkedin size={22} />,
-      label: 'LinkedIn Profile',
-      value: 'Deepak Nandhakumar',
-      href: 'https://www.linkedin.com/in/deepaknandhakumar/',
-      target: '_blank',
-    },
-    {
-      icon: <Instagram size={22} />,
-      label: 'Instagram Profile',
-      value: 'ig.singleop',
-      href: 'https://www.instagram.com/ig.singleop',
-      target: '_blank',
-    },
-    {
-      icon: <Fiverr size={22} />,
-      label: 'Fiverr Profile',
-      value: 'ig_single',
-      href: 'https://www.fiverr.com/ig_single/',
-      target: '_blank',
-    },
-    {
-      icon: <Behance size={22} />,
-      label: 'Behance Profile',
-      value: 'deepak-nandhakumar',
-      href: 'https://www.behance.net/deepak-nandhakumar',
-      target: '_blank',
-    },
+      name: 'Dribbble',
+      href: 'https://dribbble.com',
+      svg: (
+        <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+          <path d="M12 0a12 12 0 1 0 12 12A12.013 12.013 0 0 0 12 0zm7.848 10.428a10.05 10.05 0 0 1-4.757 1.054c-.11 0-.22 0-.33-.005a18.286 18.286 0 0 0 3.255-6.953 10.155 10.155 0 0 1 1.832 5.904zm-3.69-6.985a16.275 16.275 0 0 1-3.003 6.467 27.868 27.868 0 0 1-5.836-3.82 10.088 10.088 0 0 1 8.839-2.647zM3.926 7.423a26.064 26.064 0 0 0 6.096 3.961 14.159 14.159 0 0 1-4.492 8.358A10.076 10.076 0 0 1 3.926 7.423zm3.177 13.565A12.213 12.213 0 0 0 11.236 13c1.947 1.854 4.093 3.473 6.402 4.84a10.08 10.08 0 0 1-10.535 3.148zM19.1 16.326a38.411 38.411 0 0 0-6.071-4.636 20.316 20.316 0 0 0 .34-.005 12.03 12.03 0 0 0 5.438-1.226 10.065 10.065 0 0 1 .293 5.867z"/>
+        </svg>
+      )
+    }
   ];
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden bg-slate-100/40 dark:bg-darkCard/20">
-      {/* Background Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full glow-orb-indigo -z-10 animate-float-slow opacity-60"></div>
-      <div className="absolute bottom-10 right-10 w-[450px] h-[450px] rounded-full glow-orb-emerald -z-10 animate-pulse-glow opacity-50"></div>
+    <section id="contact" className="py-24 relative overflow-hidden bg-[#FFFDFB] dark:bg-[#181614]">
+      {/* Glow Orbs */}
+      <div className="absolute top-1/3 right-10 w-96 h-96 glow-orb-coral opacity-35 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Section Heading */}
-        <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.span
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            className="text-xs sm:text-sm font-space font-semibold tracking-widest text-[#ED7751] uppercase"
           >
-            <span className="font-outfit text-xs font-bold uppercase tracking-widest text-indigo-500 dark:text-indigo-400 bg-indigo-500/10 px-4 py-1.5 rounded-full border border-indigo-500/20">
-              Let's Connect
-            </span>
-          </motion.div>
+            GET IN TOUCH
+          </motion.span>
 
           <motion.h2
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-sora font-extrabold text-3xl md:text-4xl text-slate-900 dark:text-white mt-4 mb-4"
+            transition={{ delay: 0.1 }}
+            className="mt-3 text-3xl sm:text-5xl font-extrabold font-space text-[#2B2926] dark:text-[#FFFDFB]"
           >
-            Get In <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-400 bg-clip-text text-transparent">Touch</span>
+            Let's Build Something <span className="gradient-text-coral">Extraordinary</span>
           </motion.h2>
 
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: 80 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="h-1 bg-gradient-to-r from-indigo-500 to-emerald-400 mx-auto rounded-full"
-          />
+          <p className="mt-4 text-base text-[#6B6862] dark:text-[#FFFDFB]/75">
+            Have a project in mind or need a custom quote? Fill out the form or reach out directly to our team.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          {/* Column 1: Info Cards */}
-          <div className="lg:col-span-5 space-y-6 text-left">
-            <h3 className="font-sora font-bold text-2xl text-slate-800 dark:text-white mb-4 px-2">
-              Contact Information
+        {/* Split Layout Container */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+          {/* Left Side: Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-7 glass-card p-6 sm:p-10 rounded-3xl border border-[#ED7751]/20 shadow-glass-card"
+          >
+            <h3 className="text-2xl font-bold font-space text-[#2B2926] dark:text-[#FFFDFB] mb-2">
+              Send us a message
             </h3>
+            <p className="text-xs sm:text-sm text-[#6B6862] dark:text-[#FFFDFB]/70 mb-8">
+              We usually respond within 2 hours during business hours.
+            </p>
 
-            <div className="space-y-4">
-              {contactDetails.map((detail, idx) => (
-                <Magnetic key={idx} className="block w-full" actionScale={0.07}>
-                  <a
-                    href={detail.href}
-                    target={detail.target}
-                    rel={detail.target ? 'noopener noreferrer' : undefined}
-                    className="p-5 rounded-2xl bg-white dark:bg-darkCard border border-white/30 dark:border-white/5 flex items-start gap-4 hover:neo-box-in transition-all duration-300 neo-box-out group block"
-                  >
-                    <div className="p-3 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform">
-                      {detail.icon}
-                    </div>
-                    <div>
-                      <div className="font-outfit text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wide">
-                        {detail.label}
-                      </div>
-                      <div className="font-sora font-semibold text-sm md:text-base text-slate-800 dark:text-white mt-1 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors">
-                        {detail.value}
-                      </div>
-                      {detail.subValue && (
-                        <div className="font-inter text-xs text-slate-500 mt-0.5 leading-relaxed">
-                          {detail.subValue}
-                        </div>
-                      )}
-                    </div>
-                  </a>
-                </Magnetic>
-              ))}
-            </div>
-          </div>
+            {submitted ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="p-8 rounded-2xl bg-[#FBEAE3] dark:bg-[#201D1A] border border-[#ED7751] text-center"
+              >
+                <CheckCircle2 className="w-12 h-12 text-[#ED7751] mx-auto mb-3" />
+                <h4 className="text-xl font-bold font-space text-[#2B2926] dark:text-[#FFFDFB]">
+                  Thank you! Message Received.
+                </h4>
+                <p className="text-sm text-[#6B6862] dark:text-[#FFFDFB]/80 mt-2">
+                  Our team will review your project details and get back to you shortly.
+                </p>
+              </motion.div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-xs font-space font-semibold uppercase tracking-wider text-[#2B2926] dark:text-[#FFFDFB] mb-2">
+                      Your Name *
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      placeholder="e.g. Alex Morgan"
+                      className="w-full px-4 py-3 rounded-xl bg-[#FFFDFB] dark:bg-[#181614] border border-[#ED7751]/20 focus:border-[#ED7751] focus:ring-2 focus:ring-[#ED7751]/20 outline-none transition-all text-sm"
+                    />
+                  </div>
 
-          {/* Column 2: Contact Form */}
-          <div className="lg:col-span-7">
-            <div className="p-6 md:p-10 rounded-3xl glass-panel-strong shadow-xl border border-white/20 dark:border-white/5 relative">
-              <h3 className="font-sora font-bold text-2xl text-slate-800 dark:text-white mb-6 text-left">
-                Send a Message
-              </h3>
+                  <div>
+                    <label className="block text-xs font-space font-semibold uppercase tracking-wider text-[#2B2926] dark:text-[#FFFDFB] mb-2">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      placeholder="e.g. alex@company.com"
+                      className="w-full px-4 py-3 rounded-xl bg-[#FFFDFB] dark:bg-[#181614] border border-[#ED7751]/20 focus:border-[#ED7751] focus:ring-2 focus:ring-[#ED7751]/20 outline-none transition-all text-sm"
+                    />
+                  </div>
+                </div>
 
-              <form onSubmit={handleSubmit} className="space-y-5 text-left">
-                <div>
-                  <label htmlFor="name-input" className="block font-outfit text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
-                    Your Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name-input"
-                    placeholder="Enter your name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    required
-                    className="w-full px-5 py-3 rounded-2xl glass-input text-slate-800 dark:text-white font-inter placeholder-slate-400"
-                  />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-xs font-space font-semibold uppercase tracking-wider text-[#2B2926] dark:text-[#FFFDFB] mb-2">
+                      Project Service *
+                    </label>
+                    <select
+                      value={formData.service}
+                      onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl bg-[#FFFDFB] dark:bg-[#181614] border border-[#ED7751]/20 focus:border-[#ED7751] focus:ring-2 focus:ring-[#ED7751]/20 outline-none transition-all text-sm"
+                    >
+                      <option value="Web Development">Web Development (from ₹6,000)</option>
+                      <option value="UI/UX Design">UI/UX Design (from ₹5,000)</option>
+                      <option value="Digital Marketing">Digital Marketing (from ₹8,000)</option>
+                      <option value="Content Creation">Content Creation (from ₹4,000)</option>
+                      <option value="Full Digital Package">Full Digital Package (Bundled)</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-space font-semibold uppercase tracking-wider text-[#2B2926] dark:text-[#FFFDFB] mb-2">
+                      Estimated Budget
+                    </label>
+                    <select
+                      value={formData.budget}
+                      onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl bg-[#FFFDFB] dark:bg-[#181614] border border-[#ED7751]/20 focus:border-[#ED7751] focus:ring-2 focus:ring-[#ED7751]/20 outline-none transition-all text-sm"
+                    >
+                      <option value="Under ₹10,000">Under ₹10,000</option>
+                      <option value="₹10,000 - ₹25,000">₹10,000 - ₹25,000</option>
+                      <option value="₹25,000 - ₹50,000">₹25,000 - ₹50,000</option>
+                      <option value="₹50,000+">₹50,000+</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div>
-                  <label htmlFor="email-input" className="block font-outfit text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="email-input"
-                    placeholder="Enter your email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    required
-                    className="w-full px-5 py-3 rounded-2xl glass-input text-slate-800 dark:text-white font-inter placeholder-slate-400"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="message-input" className="block font-outfit text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
-                    Message
+                  <label className="block text-xs font-space font-semibold uppercase tracking-wider text-[#2B2926] dark:text-[#FFFDFB] mb-2">
+                    Project Overview *
                   </label>
                   <textarea
-                    id="message-input"
-                    placeholder="Type your message here..."
-                    rows="4"
+                    rows={4}
+                    required
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    required
-                    className="w-full px-5 py-3 rounded-2xl glass-input text-slate-800 dark:text-white font-inter placeholder-slate-400 resize-none"
-                  ></textarea>
+                    placeholder="Tell us about your project goals, timeline, and key requirements..."
+                    className="w-full px-4 py-3 rounded-xl bg-[#FFFDFB] dark:bg-[#181614] border border-[#ED7751]/20 focus:border-[#ED7751] focus:ring-2 focus:ring-[#ED7751]/20 outline-none transition-all text-sm resize-none"
+                  />
                 </div>
 
-                <div className="pt-2">
-                  <Magnetic className="w-full block">
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full py-4 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-indigo-600 text-white font-outfit font-bold shadow-lg hover:shadow-emerald-500/20 active:scale-[0.98] transition-all flex items-center justify-center gap-2 group disabled:opacity-75 disabled:pointer-events-none block"
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <div className="w-5 h-5 rounded-full border-2 border-white/30 border-t-white animate-spin"></div>
-                          Sending Message...
-                        </>
-                      ) : (
-                        <>
-                          Send Message
-                          <Send size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                        </>
-                      )}
-                    </button>
-                  </Magnetic>
-                </div>
+                <button
+                  type="submit"
+                  className="w-full py-4 rounded-xl bg-[#ED7751] hover:bg-[#D9603B] text-[#FFFDFB] font-space font-semibold text-sm tracking-wide shadow-coral-sm hover:shadow-coral-glow transition-all duration-300 flex items-center justify-center gap-2 group"
+                >
+                  <span>Submit Project Inquiry</span>
+                  <Send className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </button>
               </form>
+            )}
+          </motion.div>
 
-              {/* Form Submission Success Overlay */}
-              <AnimatePresence>
-                {isSuccess && (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    className="absolute inset-0 bg-white/95 dark:bg-darkBg/95 backdrop-blur-md rounded-3xl flex flex-col items-center justify-center p-8 z-10"
-                  >
-                    <div className="w-16 h-16 rounded-full bg-green-500/10 text-green-500 flex items-center justify-center mb-4 border border-green-500/20">
-                      <CheckCircle size={32} />
-                    </div>
-                    <h4 className="font-sora font-extrabold text-xl text-slate-800 dark:text-white mb-2">
-                      Message Sent Successfully!
-                    </h4>
-                    <p className="font-inter text-sm text-slate-500 dark:text-slate-400 text-center max-w-sm leading-relaxed mb-6">
-                      Thank you for reaching out, Deepak! I have received your message simulation and will respond shortly.
-                    </p>
-                    <button
-                      onClick={() => setIsSuccess(false)}
-                      className="px-6 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-outfit text-sm font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
-                    >
-                      Close Window
-                    </button>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+          {/* Right Side: Contact Info Card with Coral Gradient */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-5 p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#ED7751] to-[#D9603B] text-[#FFFDFB] shadow-coral-glow flex flex-col justify-between relative overflow-hidden"
+          >
+            {/* Background Decorative Mesh Circles */}
+            <div className="absolute -bottom-10 -right-10 w-64 h-64 rounded-full bg-[#FFFDFB]/10 blur-2xl pointer-events-none" />
+
+            <div>
+              <span className="px-3.5 py-1 rounded-full bg-[#FFFDFB]/20 backdrop-blur-md text-[#FFFDFB] text-xs font-space font-semibold tracking-wider uppercase">
+                DIRECT CONTACT
+              </span>
+
+              <h3 className="text-3xl font-extrabold font-space mt-4">
+                Let's start a conversation.
+              </h3>
+              <p className="mt-2 text-sm text-[#FFFDFB]/90 leading-relaxed">
+                Prefer direct call or WhatsApp? Reach out to our lead team directly anytime.
+              </p>
+
+              {/* Details List */}
+              <div className="mt-8 space-y-6">
+                <a
+                  href="https://wa.me/917092490337"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 p-4 rounded-2xl bg-[#FFFDFB]/10 hover:bg-[#FFFDFB]/20 backdrop-blur-md transition-colors border border-[#FFFDFB]/20 group"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-[#FFFDFB] text-[#ED7751] flex items-center justify-center shrink-0 shadow-sm">
+                    <Phone className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-semibold text-[#FFFDFB]/80 font-space">Phone / WhatsApp</div>
+                    <div className="text-base font-bold font-space tracking-wide">+91 70924 90337</div>
+                  </div>
+                </a>
+
+                <a
+                  href="mailto:mohamedasfaquea@gmail.com"
+                  className="flex items-center gap-4 p-4 rounded-2xl bg-[#FFFDFB]/10 hover:bg-[#FFFDFB]/20 backdrop-blur-md transition-colors border border-[#FFFDFB]/20 group"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-[#FFFDFB] text-[#ED7751] flex items-center justify-center shrink-0 shadow-sm">
+                    <Mail className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-semibold text-[#FFFDFB]/80 font-space">Email Us Directly</div>
+                    <div className="text-base font-bold font-space tracking-wide break-all">mohamedasfaquea@gmail.com</div>
+                  </div>
+                </a>
+
+                <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#FFFDFB]/10 backdrop-blur-md border border-[#FFFDFB]/20">
+                  <div className="w-12 h-12 rounded-xl bg-[#FFFDFB] text-[#ED7751] flex items-center justify-center shrink-0 shadow-sm">
+                    <Clock className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-semibold text-[#FFFDFB]/80 font-space">Response Time</div>
+                    <div className="text-sm font-bold font-space">Under 2 hours • Mon - Sat</div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+
+            {/* Social Icons Footer */}
+            <div className="mt-10 pt-6 border-t border-[#FFFDFB]/20">
+              <div className="text-xs font-space font-semibold uppercase tracking-wider text-[#FFFDFB]/80 mb-3">
+                Follow Us Online
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {socials.map((s, idx) => (
+                  <a
+                    key={idx}
+                    href={s.href}
+                    aria-label={s.name}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 rounded-xl bg-[#FFFDFB]/15 hover:bg-[#FFFDFB] hover:text-[#ED7751] transition-all duration-200 border border-[#FFFDFB]/20"
+                  >
+                    {s.svg}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
